@@ -1,0 +1,60 @@
+
+/*#########################################################*/
+/*login css goes here*/
+.login-container
+  border-radius: 2px
+  padding: 10px 2px 2px
+  margin: 10px auto
+
+  .input-group
+    position: relative
+    margin: 10px 20px 20px
+    &.label-animation
+      padding-top: 20px
+
+
+    input
+      border: none
+      outline: none
+      box-shadow: none
+      border-bottom: 2px solid #21a1e1
+      color: #00B3CA
+      width: 100%
+      background: none
+
+      &.required-error
+        border-color: rgb(231, 76, 60)
+
+      &#login-submit
+        background: white
+        color: #21a1e1
+        border: 1px solid #21a1e1
+        width: auto
+        padding: 5px 15px
+        border-radius: 15px
+        transition: all linear .15s
+        .ok
+          background: #21a1e1
+          color: white
+          cursor: pointer
+          &:focus
+            background: #014F76
+            border-color: #014F76
+
+    label
+      position: absolute
+      left: 0
+      top: 18px
+      pointer-events: none
+      font-size: 15px
+      color: #aaa
+      transition: all 0.15s ease-out 0s
+      font-style: italic
+      font-weight: 700
+
+      &.move-label
+        font-size: 14px
+        top: 0
+
+    &:last-child
+      text-align: right

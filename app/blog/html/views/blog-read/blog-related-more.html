@@ -1,0 +1,8 @@
+
+<aside data-ng-controller="RelatedBlogsController">
+  <h3>Related Blogs</h3>
+  <ul></ul>
+  <li data-ng-repeat="blog in relatedBlogs"> <a ui-sref="blog({'blogRecogId':blog.recogId})"><img src="blog.thumbImg" alt="blog-image"/><span>{{blog.title}}</span></a>
+  </li>
+  <button>Load more...</button>
+</aside>

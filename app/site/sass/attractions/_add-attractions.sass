@@ -1,0 +1,148 @@
+
+// css for add attraction goes here
+
+.add-attractions
+  background: #ffffff
+  padding-bottom: 25px
+
+  .add-attractions-container
+    max-width: 100%
+    margin: 0 auto
+    padding-bottom: 25px
+    border-bottom: 1px solid silver
+
+    .attractions
+      padding: 10px
+
+      .attractions-container
+        height: 640px
+        overflow-y: auto
+        position: relative
+
+        .arrow
+          position: absolute
+          top: 270px
+          width: 50px
+          height: 50px
+          line-height: 50px
+          text-align: center
+          background: #21a1e1
+          z-index: 5
+          border-radius: 50%
+          color: #ffffff
+          font-size: 40px
+          transition: all .15s ease-in-out 0s
+          cursor: pointer
+          box-shadow: 0 5px 6px rgba(0,0,0,.2),0 5px 6px rgba(0,0,0,.2)
+
+          &.left
+            left: 10px
+
+          &.right
+            right: 10px
+
+        &:hover .arrow
+          box-shadow: 0 10px 6px rgba(0,0,0,.2),0 10px 6px rgba(0,0,0,.2)
+
+
+      .attraction
+        max-width: 220px
+        height: 250px
+        border-radius: 2px
+        margin: 10px auto 60px
+        position: relative
+        overflow: hidden
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2)
+
+        .title
+          background: rgb(52, 73, 94)
+          text-align: center
+          height: 30px
+          line-height: 30px
+          color: white
+
+        .image
+          width: 100%
+          height: 220px
+          line-height: 170px
+          text-align: center
+
+          img
+            display: block
+            width: auto
+            max-height: 100%
+            vertical-align: middle
+
+
+        .attraction-info
+          position: absolute
+          bottom: -175px
+          height: 220px
+          width: 100%
+          background: rgba(44, 62, 80, 0.5)
+          box-sizing: border-box
+          padding: 10px
+          color: #ffffff
+          transition: all .3s ease-in-out 0s
+        .read-more
+          position: absolute
+          height: 48px
+          width: 100%
+          line-height: 48px
+          text-align: right
+          color: #ffffff
+          left: 0
+          bottom: -50px
+          background: #000000
+          transition: all .5s ease-in-out 0s
+          cursor: pointer
+        .add-attraction
+          position: absolute
+          top: 0
+          right: 0
+          height: 30px
+          width: 30px
+          font-size: 25px
+          line-height: 30px
+          text-align: center
+          color: white
+          cursor: pointer
+          transition: all .15s ease-in-out 0s
+          font-weight: bolder
+        &:hover
+          .read-more
+            bottom: 0
+          .attraction-info
+            bottom: 0
+            background: rgba(44, 62, 80, 0.9)
+          .add-attraction
+            background: #000000
+
+      .head
+        padding: 20px 0
+        border-top: 1px solid silver
+        text-align: center
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+        p
+          font-weight: 600
+          font-size: 18px
+          color: grey
+
+        span
+          display: inline-block
+          padding: 50px 10px
+          color: dimgray
+
+    .proceed-or-know
+      background: silver
+      padding: 20px 10px
+      text-align: center
+      p
+        padding: 20px 10px
+
+      a
+        border: 1px solid #21a1e1
+        padding: 10px 20px
+        color: #21a1e1
+        background: white

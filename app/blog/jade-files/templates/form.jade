@@ -1,0 +1,32 @@
+
+form(action="" method="post" )
+  .form-input-group.has-value.focused
+    label.form-floatlabel(for="full-name") Full name
+    input#full-name.form-input(type="text" name="full-name" required="")
+    span.form-required *
+  .form-input-group.has-value
+    label.form-floatlabel(for="email") Email address
+    input#email.form-input(type="email" name="email" required="")
+    span.form-required *
+
+
+  legend.form-legend Which best describes your business:
+    span.form-required *
+
+  .form-radio-group
+    input#type-app.form-radio(type="radio" value="Apps" name="type"  required="")
+    label.form-radio-button(for="type-app")
+    label.form-label(for="type-app") Apps
+  .form-radio-group
+    input#type-game.form-radio(type="radio" value="Games" name="type"  required="")
+    label.form-radio-button(for="type-game")
+    label.form-label(for="type-game") Games
+
+  .form-radio-group
+    .media
+      .media-figure
+        input#add.form-checkbox(type="checkbox" name="add"  required=""
+        value="Add me to the mailing list for the monthly newsletter and occasional emails about development and Google Play opportunities.")
+        label.form-checkbox-button(for="add")
+      .media-body
+        label.form-label(for="add") Add me to the mailing list for the monthly newsletter and occasional emails about development and Google Play opportunities.span.form-required")*

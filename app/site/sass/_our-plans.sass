@@ -1,0 +1,89 @@
+
+/* pre planned trips css goes here*/
+.preplanned-attraction-container
+  padding-bottom: 50px
+  .banner-container
+    max-width: 900px
+    margin: 0 auto
+    box-sizing: content-box
+    .image-container
+      width: 100%
+      height: 300px
+      position: relative
+      box-sizing: border-box
+      overflow: hidden
+      img
+        display: inline-block
+        box-sizing: border-box
+        height: 100%
+      .description
+        position: absolute
+        bottom: 0
+        left: 0
+        height: 50px
+        width: 100%
+        line-height: 50px
+        padding: 5px 0
+        background: rgba(0, 0, 0, .5)
+        font-family: "Garamond", Helvetica, Arial, sans-serif
+        p
+          padding: 0 20px
+          font-family: 'Droid Serif', serif
+          font-weight: bold
+          font-size: 25px
+          color: rgb(255, 255, 255)
+
+  .place-info-container
+    background: #ffffcc
+    padding: 20px 0
+    margin: 0 auto
+    max-width: 900px
+
+  .menu-container
+    box-sizing: border-box
+    ul
+      list-style: none
+      li
+        height: 80px
+        line-height: 40px
+        text-align: center
+        font-size: 18px
+        cursor: pointer
+        transition: all linear .15s
+        color: rgb(140, 0, 0)
+        text-transform: uppercase
+        &:not(:last-child)
+          border-bottom: 1px solid silver
+        i
+          color: black
+        span
+          display: inline-block
+        &.active
+          background: rgb(44, 62, 80)
+          color: white
+          i
+            color: #ffffff
+  .menu-item-values
+    box-sizing: border-box
+    padding: 0 20px
+    font-size: 18px
+    color: rgb(140, 0, 0)
+    line-height: 1.6
+    .travels
+      margin-bottom: 20px
+  .proceed-group
+    text-align: center
+    padding: 20px 0 20px 0
+
+    span
+      padding: 5px 10px
+      border-radius: 25px
+      color: rgb(140, 0, 0)
+      border: 2px solid rgb(140, 0, 0)
+      transition: all linear .15s
+      display: inline-block
+      margin: 10px 0
+      cursor: pointer
+      &:hover
+        background: rgb(140, 0, 0)
+        color:  #ffffcc

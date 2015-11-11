@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="tourepedia">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="fragment" content="!" />
+  <!-- <base href="http://localhost:3000/"> -->
+  <title>Tourepedia</title>
+  <link rel="icon" type="image/png" href="./shared/img/favicon_icon.png">
+  <link rel="stylesheet" href="./shared/css/tools.css">
+  <link rel="stylesheet" href="./shared/css/shared.css">
+  <link rel="stylesheet" href="./site/css/tools.css">
+  <link rel="stylesheet" href="./site/css/site.css">
+</head>
+<body>
+  <my-menu></my-menu>
+  <div class="main-content-wrapper">
+    <div ui-view="place-info" autoscroll="false"></div>
+    <div ui-view="fix-plans" autoscroll="false"></div>
+    <div ui-view="testimonials" autoscroll="false"></div>
+  </div>
+
+  <!-- <my-login></my-login> -->
+  
+  
+  
+  <my-footer></my-footer>
+
+  <tp-move-top dir="./shared"></tp-move-top>
+
+  <tp-auth-modal dir="./shared"></tp-auth-modal>
+
+  <plan-costs></plan-costs>
+  
+<!--   notification for our site -->
+  <tp-notification dir="./shared"></tp-notification>
+
+  <!-- <div id="notification">
+    Attraction added to your list bellow.
+  </div> -->
+
+  <script src="./shared/js/tools.js"></script>
+  <script src="./shared/js/shared.js"> </script>
+  <script src="./site/js/tools.js"> </script>
+  <script src="./site/js/site.js"> </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+<div class="menu-bar">
+  <section class="filters-section">
+    <h3>Filter By</h3>
+    <section class="filters-subsection">
+      <h4>Offers<em><small>
+             
+            (valid till 10th Sept'15)</small></em></h4>
+      <li>
+        <input id="offerUpTo30" type="checkbox" data-ng-model="offerUpTo[0]"/>
+        <label for="offerUpTo30">Upto 30% Off</label>
+      </li>
+    </section>
+    <section class="filters-subsection">
+      <h4>Type</h4>
+      <li> 
+        <input id="weekends" type="checkbox" data-ng-model="placeTypes[0]" data-ng-click="addTypeFilter('Weekends')"/>
+        <label for="weekends">Weekends</label>
+      </li>
+      <li>
+        <input id="extendedWeekends" type="checkbox" data-ng-model="placeTypes[1]" data-ng-click="addTypeFilter('Extended Weekends')"/>
+        <label for="extendedWeekends">Extedned Weekends</label>
+      </li>
+    </section>
+    <section class="filters-subsection">
+      <h4>Popularity</h4>
+      <li> 
+        <input id="unexplored" type="checkbox" data-ng-model="placePopular[0]" data-ng-click="addPopularityFilter('Unexplored')"/>
+        <label for="unexplored">Unexplored</label>
+      </li>
+      <li>
+        <input id="popular" type="checkbox" data-ng-model="placePopular[1]" data-ng-click="addPopularityFilter('Popular')"/>
+        <label for="popular">Popular</label>
+      </li>
+    </section>
+  </section>
+  <section class="sorts">
+    <h3>Sort By</h3>
+    <section class="sorts-subsection">
+      <h4>Price</h4>
+      <li> 
+        <input id="lowToHigh" type="radio" name="price-sort" data-ng-model="options.sortByPrice" data-ng-value="false"/>
+        <label for="lowToHigh">Low to high</label>
+      </li>
+      <li>
+        <input id="highToLow" type="radio" name="price-sort" data-ng-model="options.sortByPrice" data-ng-value="true"/>
+        <label for="highToLow">High to low</label>
+      </li>
+    </section>
+  </section>
+</div>

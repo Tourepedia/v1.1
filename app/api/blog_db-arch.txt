@@ -1,0 +1,36 @@
+tourepedia_blog:
+	data:
+		"id" int(32) primary-key auto-increment
+		"title" varchar(100)
+		"recogId" varchar(100)
+		"language" varchar(10)
+		"shortInfo" varchar(200)
+		"info" varchar(300)
+		"date" varchar(20)
+		"thumbImg" varchar(50)
+		"img" varchar(50)
+		"category" varchar(20)
+		"likes" varchar(10)
+		"socialShares"  varchar(10)
+		"readTime" varchar(4)
+		"tagId" int(32) # foreign key
+		"relatedTagIds" varchar(100) # foreign key
+		"authorName" varchar(50)
+		"authorId" int(32) # foregin key
+
+	tags:
+		"id" int(32) primary-key auto-increment
+		"tagName" varchar(10)  
+
+	authors:
+		"id" int(32) primary-key auto-increment
+		"userId" int(32) # foreign key
+		"name" varchar(50)
+		"email" varchar(50)
+		"occupation" varchar(30)
+		"thumbImg" varchar(20)
+		"img" varchar(20)
+		"proArea" varchar(30)
+		"tagLine" varchar(30)
+		"urls" varchar(200)
+		"bio" varchar(300)

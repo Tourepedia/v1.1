@@ -1,0 +1,34 @@
+
+
+
+// swap utils to make items swap in or out on a .swap container
+.swap
+  overflow: hidden
+  position: relative
+
+  &-section
+    left: 0
+    opacity: 0
+    position: absolute
+    top: 0
+    width: 100%
+    min-height:100%
+    transition: opacity 1s, transform .5s
+
+    &.left
+      transform: translateX(-100%)
+
+    &.right
+      transform: translateX(100%)
+
+    &.down
+      transform: translateY(100%)
+
+    &.up
+      transform: translateY(-100%)
+
+    &.active
+      opacity: 1
+      position: relative
+      transform: translate(0, 0)
+      width: auto

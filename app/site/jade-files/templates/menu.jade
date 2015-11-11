@@ -1,0 +1,42 @@
+mixin locationList(location)
+  li
+    button.fa( data-ng-class="{'selected': selectedPlaceInfo.place_region_name == '#{location}' }") #{location}
+    ul
+      li(data-ng-repeat="place in places | filter:{'place_region_name': '#{location}' }")
+        a(ui-sref="selectDestination" data-ng-click="updatePlaceInfo(place.id)") {{place.place_name}}
+
+
+nav.menu#menu(data-ng-controller="MenuLocationPlacesController")
+  .menu-top-items
+    .side-items.left-side
+      ul
+        li(data-ng-hide="isLoggedIn")
+          button(data-ng-click="login()") Sign In
+        li(data-ng-hide="isLoggedIn")
+          button(data-ng-click="register()") Register
+        li(data-ng-show="isLoggedIn")
+          button(data-ng-click="logout()") Logout
+        li: a( ui-sref="careers") We are hiring
+        //- li: a(href="./blog") Blog
+    //- .vertical-divider
+    .side-items.right-side
+      ul
+        li: a.highlight( ui-sref="campusSpecial") IITK Junta Special
+        //- li: a(ui-sref="instaBook") Insta Book
+        li: a(ui-sref="campusAmbassador") Campus Ambassador
+        // li: a(ui-sref="samplePlan") Sample Plan
+        //- li
+        //-   button: i.fa.fa-shopping-cart
+        //- li
+        //-   button: i.fa.fa-search
+  .menu-logo
+    h1.logo(ui-sref="home")
+    p you decide. we make it happen
+  .menu-locations
+    ul
+      +locationList('Himachal Pradesh')
+      +locationList('North East')
+      +locationList('Rajasthan')
+      +locationList('Goa')
+      +locationList('Uttrakhand')
+      +locationList('Others')

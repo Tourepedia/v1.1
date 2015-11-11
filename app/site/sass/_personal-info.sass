@@ -1,0 +1,138 @@
+
+/* personal information css goes here */
+.personal-information
+  background: #ffffff
+  width: 100%
+  padding-bottom: 150px
+  .personal-information-container
+    max-width: 900px
+    margin: 0 auto
+    .plan-book-menu
+      position: relative
+      list-style: none
+      width: 90%
+      margin: 0 auto -1px
+      display: flex
+      z-index: 2
+      li
+        cursor: pointer
+        flex: 1
+        padding: 5px 0
+        text-align: center
+        color: grey
+        font-weight: bold
+        box-shadow: 0 -2px 2px rgba(0, 0, 0, .2)
+        margin: 0 10px
+        transition:all linear .15s
+        height: 25px
+        &.active
+          color: #014F76
+          background: #C7C7C7
+          box-shadow: 0 -2px 2px rgba(0, 0, 0, .2)
+          border-radius: 5px 5px 0 0
+          font-size:16px
+
+
+    .information-form
+      position: relative
+      background: #ffffff
+      padding: 75px 20px
+      box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .2), 0 1px 6px 0 rgba(0, 0, 0, .2)
+      border-radius: 5px
+      z-index: 1
+
+    .input-group
+      padding: 10px 10px
+      label
+        display: block
+        color: #014F76
+        font-size: 18px
+        font-family: "Garamond", Helvetica, Arial, sans-serif
+        line-height: 1.2
+        text-align: justify-all
+        padding: 5px 0
+      .view-our-plans
+        text-decoration: underline
+        color: #00B3CA
+        display: inline-block
+        margin-left: 5px
+        cursor: pointer
+    .inputs
+      position: relative
+      input
+        &#netAmount1
+          display: inline-block
+          width: auto
+      &.rad-check
+        input
+          display: inline
+          width: auto
+        label
+          width: auto
+          display: inline-block
+          margin: 0 20px 0 5px
+          font-size: 14px
+      .rad-check-container
+        display: inline-block
+      textarea
+        &.input-error
+          border-color: rgba(255, 61, 17, 1)
+        &.input-warning
+          border-color: #F1C40F
+        &.input-valid
+          border-color: #2ECC71
+    h2
+      font-size: 24px
+      font-family: "Garamond", Helvetica, Arial, sans-serif
+      color: dimgrey
+      line-height: 1.2
+      text-align: justify-all
+      padding: 20px 0
+    textarea
+      resize: none
+      width: 90%
+      outline: none
+      border: 1px solid silver
+      padding: 5px
+      border-radius: 5px
+      color: #014F76
+      box-shadow: none
+    .error-container
+      position: absolute
+      bottom: -15px
+      right: 100px
+      text-align: right
+      color: rgba(255, 61, 17, 1)
+      font-size: 12px
+    select
+      background: #F2F2F2
+      border-radius: 5px
+      outline: none
+      border: 2px solid #E8E8E8
+      color: #014F76
+      padding: 5px 10px
+      font-family: "DINRoundWeb", Verdana, Arial, Tahoma, sans-serif
+
+    .proceed-group
+      text-align: center
+      padding: 20px 0 20px 0
+      span
+        background: white
+        padding: 5px 10px
+        border-radius: 25px
+        color: gray
+        border: 2px solid gray
+        transition: all linear .15s
+        display: inline-block
+        margin: 10px 0
+        &.valid-form
+          color: #21a1e1
+          border: 2px solid #21a1e1
+          cursor: pointer
+          &:hover
+            background: #21a1e1
+            color: #ffffff
+    .some-info
+      color: dimgrey
+      margin: 30px auto 10px
+      letter-spacing: .05em

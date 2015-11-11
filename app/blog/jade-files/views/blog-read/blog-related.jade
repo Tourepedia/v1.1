@@ -1,0 +1,6 @@
+section.section-more-blogs(data-ng-controller="RelatedBlogsController")
+	hr
+	ul
+		blog-info(data-ng-repeat="blog in relatedBlogs" blog="blog")
+	.action
+		button.btn.cta(data-ng-show="moreAvailable" data-ng-click="loadMore()" data-ng-disabled="loadingBlogs") Load more...

@@ -1,0 +1,90 @@
+mixin floatLabelInputGroup(id, type, label, model)
+  .form-input-group
+    label.form-floatlabel(for=id)= label
+    input.form-input(id=id type=type input-val name=model data-ng-model=model required)
+    span.form-required *
+
+mixin radCheckGroup(id, type, label, model)
+  .form-radio-group
+    input(id=id type=type class="form-#{type}" name=model  data-ng-model=model)
+    label(for=id class="form-#{type}-button")
+    label.form-label(for=id)= label
+
+#auth-modal.modal(tp-modal)  
+  .modal-container
+    .modal-window
+      header.modal-header
+        button.modal-header-close(data-ng-click="closeModal()") 
+          i.fa.fa-close.fa-lg
+        .swap
+          section.swap-section.down(data-ng-class="{'active': !registrationSuccess}")
+            h2.modal-header-title 
+              span(data-ng-class="{'active': purpose== 'login'}" data-ng-click="purpose = 'login'") Login 
+              | | 
+              span(data-ng-class="{'active': purpose== 'register'}" data-ng-click="purpose = 'register'") Signup.
+            p.modal-header-subtitle * Required Fields
+          section.swap-section.up(data-ng-class="{'active': registrationSuccess}")
+            h2.modal-header-title Registration Success <i class="fa fa-smile-o"></i>
+      .swap
+        section.swap-section.left(data-ng-class="{'active': purpose == 'login' && !registrationSuccess}")
+          form.login-form(name="loginForm" novalidate data-ng-submit="login()")
+            section.modal-content
+              fieldset.form-error(data-ng-show="loginError") {{loginError}}
+              fieldset.form-fieldset
+                +floatLabelInputGroup('email', 'email', 'Email', 'user.email')
+                +floatLabelInputGroup('password', 'password', 'Password', 'user.password')
+              fieldset.form-fieldset
+                .form-radio-group
+                  input#keepLoggedIn.form-checkbox(type="checkbox" class="" name="user.wantLoggedIn" )
+                  label.form-checkbox-button(for="keepLoggedIn" )
+                  label.form-label(for="keepLoggedIn") Stay signed in.
+            footer.modal-footer
+              button.modal-action.btn(type="submit" data-ng-disabled="loginForm.$invalid") Login
+          //- .other-logins
+          //-   section.modal-content
+          //-     button.modal-action.btn(type="button") <i class="fa fa-facebook"></i> |  Login with Facebook
+    
+        section.swap-section.right(data-ng-class="{'active': purpose == 'register' && !registrationSuccess}")
+          form.signup-form( name="signupForm" novalidate data-ng-submit="register()")
+            section.modal-content.row
+              fieldset.form-error(data-ng-show="registrationError") {{registrationError}}
+              ng-form(name="userInfoForm" data-ng-class="{'col-md-6': newUser.isAuthor}")
+                fieldset.form-fieldset
+                  +floatLabelInputGroup('newUser-name', 'text', 'Name', 'newUser.name')
+                  +floatLabelInputGroup('newUser-email', 'email', 'Email', 'newUser.email')
+                  +floatLabelInputGroup('newUser-password', 'password', 'Password', 'newUser.password')
+                  +floatLabelInputGroup('newUser-repassword', 'password', 'Retype Password', 'newUser.repassword')
+              ng-form.col-md-6(name="authorInfoForm")
+                fieldset.form-fieldset(data-ng-show="author")
+                  +floatLabelInputGroup('author-occupation', 'text', 'Occupation', 'newUser.occupation')
+                  +floatLabelInputGroup('author-tagline', 'text', 'Tag Line', 'newUser.tagline')
+                  
+                  .form-input-group
+                    legend.form-legend Urls:
+                      span.form-required *
+                    .input-addons-group
+                      span.addon
+                        i.fa.fa-facebook
+                      input#author-urls.form-input( input-val type="url" name="newUser.urls.fb" data-ng-model="newUser.urls.fb" required)
+                    .input-addons-group
+                      span.addon
+                        i.fa.fa-google-plus
+                      input.form-input(input-val type="url" name="newUser.urls.gp" data-ng-model="newUser.urls.gp" required)
+                    .input-addons-group
+                      span.addon
+                        i.fa.fa-twitter
+                      input.form-input(input-val type="url" name="newUser.urls.tr" data-ng-model="newUser.urls.tr" required)
+                  .form-input-group
+                    label.form-floatlabel(for="author-bio") Bio
+                    textarea#author-bio.form-input(input-val name="newUser.bio" data-ng-model="newUser.bio" required rows="5")
+                    span.form-required *
+            footer.modal-footer
+              button.modal-action.btn.btn-default(type="submit" data-ng-disabled="userInfoForm.$invalid || (newUser.isAuthor && authorInfoForm.$invalid)") Register
+        section.swap-section.down(data-ng-class="{'active': registrationSuccess}")
+          section.modal-content
+            h2.modal-message.success
+              i.fa.fa-check-circle
+              | &nbsp; Login 
+              span.link(data-ng-click="wantsLogin = true; registrationSuccess = false;") Now
+              
+                

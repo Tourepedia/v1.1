@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-ng-app="tourepedia.blog">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog | Tourepedia</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700">
+    <link rel="icon" type="image/png" href="./../shared/img/favicon_icon.png">
+    <link rel="stylesheet" href="./../shared/css/tools.css">
+    <link rel="stylesheet" href="./../shared/css/shared.css">
+    <link rel="stylesheet" href="./css/blog.css">
+  </head>
+  <body>
+    <blog-menu></blog-menu>
+
+    <ui-view name="section-1"></ui-view>
+    
+    <ui-view name="section-2"></ui-view>
+
+    <about-tourepedia></about-tourepedia>
+
+    <blog-footer></blog-footer>
+
+    <!-- <move-top></move-top> -->
+    <tp-move-top dir="./../shared"></tp-move-top>
+
+    <!-- <tp-auth ></tp-auth> -->
+    <tp-auth-modal dir="./../shared"></tp-auth-modal>
+
+    <script src="./../shared/js/tools.js"></script>
+    <script src="./../shared/js/shared.js"> </script>
+
+    <script src="./js/blog.js"> </script>
+  </body>
+</html>

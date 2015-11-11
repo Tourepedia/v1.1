@@ -1,0 +1,85 @@
+mixin keyValue(key, value)
+  .row
+    .key.col-sm-4.col-xs-5.col-xxs-6
+      span #{key}:
+    .value.col-sm-4.col-xs-7.col-xxs-6
+      p #{value}
+      
+.personal-information
+  .personal-information-container
+    .plan-book-menu
+      li.active Review the information carefully ans submit
+    .information-form.final-review
+      .row
+        .info.col-sm-6
+          +keyValue('Order Type', '{{user.planType}}')
+        .info.col-sm-6
+          +keyValue('Place Name', '{{user.selectedPlace}}')
+      hr
+      .general-information
+        .row
+          .info.col-sm-6
+            +keyValue('Full Name', '{{user.plan.fullName}}')  
+          .info.col-sm-6
+            +keyValue('Email', '{{user.plan.email}}')  
+        .row
+          .info.col-sm-6
+            +keyValue('Mobile', '{{user.plan.mobileNumber}}')  
+          .info.col-sm-6
+            +keyValue('Number of People', '{{user.plan.numOfPeople}}') 
+        .row
+          .info.col-sm-6
+            +keyValue('Trip Duration', '{{user.plan.numOfDays}}')  
+          .info.col-sm-6
+            +keyValue('Net Amount', '<i class="fa fa-inr"></i> {{user.plan.priceToPay}}')  
+        .row  
+          .info.col-sm-6
+            +keyValue('Journey Starting Date', '{{user.journeyStartingDate}}')
+          .info.col-sm-6
+            +keyValue('Address:', '<p data-ng-repeat="lines in user.plan.address">{{lines}}</p>')
+      
+      hr
+      .attractions-information
+        .row.info(data-ng-show="user.ourPlanId == -1")
+          .key.col-sm-2.col-xs-5
+            span Attractions :
+          .value.col-sm-10.col-xs-7
+            p(ng-show=" user.attractionsList.length == 0") No attraction added
+            p(data-ng-repeat="attraction in user.attractionsList").
+              <b> Name </b>:  {{attraction.attraction_name}} <br/>
+              <b>Info</b> :  {{attraction.attraction_about}}
+              <br/> <br/>
+        .info.row(data-ng-show="user.ourPlanId != -1") Our Plan for <b>{{selectedPlaceInfo.place_name}}</b> is selected.
+    
+      hr      
+      .proceed-group.row
+        .col-xm-6.col-xxs-4
+          span.valid-form(ui-sref="planATrip.proceed({'planningStage':'personal-information'})"
+           data-ng-click="proceedToAddPersonalInformation()")
+            i.fa.fa-arrow-left
+            | Go back
+        .col-xs-6.col-xxs-8
+          span(data-ng-show="!isLoggedIn" onclick="LaunchDialog('login-dialog')") Login and Submit
+          i.fa.fa-spin.fa-spinner(ng-show="isProgressGoing") 
+          a(
+            ng-show="isLoggedIn && user.plan.priceToPay=='300'" 
+            href="https://www.instamojo.com/tourepedia1/plan-only/"  
+            rel="im-checkout" data-behavior="remote" data-style="dark" data-text="Pay Rs. {{user.plan.priceToPay}}" data-token="0de8a8dfd7f8b644de197b54dabc99f1" 
+            )
+            span(ng-show="isLoggedIn" data-ng-click="submitThePlan()")  Pay Rs. {{user.plan.priceToPay}}
+
+
+          a(
+            ng-show="isLoggedIn && user.plan.priceToPay=='500'" 
+            href="https://www.instamojo.com/tourepedia1/plan-only-8e41a/" 
+            rel="im-checkout" data-behavior="remote" data-style="dark" data-text="Pay Rs. {{user.plan.priceToPay}}" data-token="0de8a8dfd7f8b644de197b54dabc99f1"
+            )
+            span(ng-show="isLoggedIn" data-ng-click="submitThePlan()")  Pay Rs. {{user.plan.priceToPay}} 
+
+          a(
+            ng-show="isLoggedIn && user.plan.priceToPay=='1000'" 
+            href="https://www.instamojo.com/tourepedia1/plan-only-2dc99/" 
+            rel="im-checkout" data-behavior="remote" data-style="dark" data-text="Pay Rs. {{user.plan.priceToPay}}" data-token="0de8a8dfd7f8b644de197b54dabc99f1"
+            ) 
+            span(ng-show="isLoggedIn" data-ng-click="submitThePlan()")  Pay Rs. {{user.plan.priceToPay}}
+          script(src="https://d2xwmjc4uy2hr5.cloudfront.net/im-embed/im-embed.min.js")

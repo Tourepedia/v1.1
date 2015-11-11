@@ -1,0 +1,325 @@
+.personal-information
+  .personal-information-container()
+    ul.plan-book-menu
+      li(data-ng-class="{'active': user.planType == 'Plan'}" data-ng-click="user.planType = 'Plan'") Plan
+      li(data-ng-class="{'active' : user.planType == 'Book'}" data-ng-click="user.planType = 'Book'") Book &amp; Plan
+    .information-form.plan(data-ng-show=" user.planType == 'Plan'")
+      .form.css-form(name="planForm" novalidate)
+        .panel.panel-default
+          .panel-heading
+            span.h4 General Information 
+          .panel-body
+            .form-group.clearfix
+              .col-sm-6
+                label(for="fullName1") Full Name*
+                .inputs
+                  input#fullName1.form-control(
+                    type="text" name="fullName1" required ng-model="user.plan.fullName"
+                    data-ng-class="{'input-valid' : planForm.fullName1.$dirty && planForm.fullName1.$valid,"+
+                    "'input-error' : planForm.fullName1.$dirty && planForm.fullName1.$error.required"+
+                    "}"
+                    placeholder="enter your name"
+                    )
+              .col-sm-6
+                label(for="email1") Email*
+                .inputs
+                  input#email1.form-control(
+                    type="email" name="email1"  required data-ng-model="user.plan.email"
+                    data-ng-class="{'input-valid': planForm.email1.$dirty && planForm.email1.$valid,"+
+                    "'input-error' : planForm.email1.$dirty && planForm.email1.$error.required,"+
+                    "'input-warning' : planForm.email1.$dirty && planForm.email1.$invalid && !planForm.email1.$error.required"+
+                    "}"
+                    placeholder = "enter a valid email"
+                    )
+            .form-group.clearfix
+              .col-sm-6
+                label(for="mobileNumber1") Mobile*
+                .inputs
+                  input#mobileNumber1.form-control(
+                    type="text"  name="mobileNumber1" required data-ng-model="user.plan.mobileNumber"
+                    data-ng-class="{'input-valid' : planForm.mobileNumber1.$dirty && planForm.mobileNumber1.$valid,"+
+                    "'input-error' : planForm.mobileNumber1.$dirty && planForm.mobileNumber1.$error.required,"+
+                    "'input-warning': planForm.mobileNumber1.$dirty && planForm.mobileNumber1.$invalid && !planForm.mobileNumber1.$error.required"+
+                    "}"
+                    placeholder = "your 10 digit mobile no"
+                    )
+              .col-sm-6
+                label(for="numOfPeople1") Number of People*
+                .inputs
+                  input#numOfPeople1.form-control(
+                    type="number" name="numOfPeople1" required data-ng-model="user.plan.numOfPeople" 
+                    data-ng-class="{'input-valid' : planForm.numOfPeople1.$dirty && planForm.numOfPeople1.$valid,"+
+                    "'input-error' : planForm.numOfPeople1.$dirty && planForm.numOfPeople1.$error.required,"+
+                    "'input-warning': planForm.numOfPeople1.$dirty && planForm.numOfPeople1.$invalid && !planForm.numOfPeople1.$error.required"+
+                    "}"
+                    placeholder = "total persons"
+                    )
+            .form-group.clearfix.col-xs-12
+              label(for="address1") Address*
+              input#address1.form-control(
+                 type="text" name="address1" required data-ng-model="user.plan.address[0]" 
+                 data-ng-class="{'input-valid' : planForm.address1.$dirty && planForm.address1.$valid,"+
+                 "'input-error' : planForm.address1.$dirty && planForm.address1.$error.required"+
+                 "}"
+                  placeholder="your full address"
+                )
+            .form-group.clearfix
+              .col-sm-2
+                label(for="numOfDays2") Trip Duration*
+                .inputs
+                  select#numOfDays2.form-control(name="numOfDays2" ng-init = "user.plan.numOfDays='1-3'; user.plan.priceToPay=300" ng-model="user.plan.numOfDays" ng-change='updatePrice(user.plan.numOfDays)' required)
+                    option(ng-repeat="day in numOfDays" value="{{day}}") {{day}}
+              .col-sm-6
+                label(for="year1" style='margin-left:25px;') Journey starting date*
+                .col-sm-12
+                  .col-sm-4
+                    select#year1.form-control(name="year" ng-model="user.startingDateYear" ng-options="year for year in years")
+                  .col-sm-4
+                    select#month1.form-control(name="month" ng-model="user.startingDateMonth" ng-options="month for month in months")
+                  .col-sm-4
+                    select#day1.form-control(name="day" ng-model="user.startingDateDay" ng-options="day for day in days")
+              .col-sm-4
+                label Net Amount**
+                  span.view-our-plans(onclick="LaunchDialog('plan-costs-dialog')") <u><em>( view plan costs )</em></u>
+                .inputs
+                  span(style="display: inline-block; margin: 5px; font-weight: bolder; line-height: 1.2;")
+                    i.fa.fa-inr
+                    | {{user.plan.priceToPay}}/-
+            .form-group.clearfix
+              p * Indicates fields are mandatory to fill.
+            .form-group
+              .proceed-group.row
+                .col-sm-6
+                  span.valid-form()
+                    i.fa.fa-arrow-left
+                    | Go back
+                .col-sm-6
+                  span() Preview, Pay and Submit
+    .information-form.book-plan(data-ng-show="user.planType == 'Book'")
+      form(name="planBookForm" novalidate)
+        .panel.panel-default
+          .panel-heading
+            span.h4 General Information
+          .panel-body
+            .form-group.clearfix
+              .col-sm-6
+                label(for="fullName2") Full Name*
+                .inputs
+                  input#fullName2.form-control( type="text" name="fullName2" required
+                    data-ng-model="user.book.fullName"
+                    data-ng-class="{'input-valid' : planBookForm.fullName2.$dirty && planBookForm.fullName2.$valid,"+
+                    "'input-error' : planBookForm.fullName2.$dirty && planBookForm.fullName2.$error.required"+
+                    "}"
+                    placeholder="your name"
+                  )
+              .col-sm-6
+                label(for="email2") Email*
+                .inputs
+                  input#email2.form-control(type="email" name="email2" required
+                    data-ng-model="user.book.email"
+                    data-ng-class="{'input-valid': planBookForm.email2.$dirty && planBookForm.email2.$valid,"+
+                    "'input-error' : planBookForm.email2.$dirty && planBookForm.email2.$error.required,"+
+                    "'input-warning' : planBookForm.email2.$dirty && planBookForm.email2.$invalid && !planBookForm.email2.$error.required"+
+                    "}"
+                    placeholder="enter a valid email"
+                  )
+            .form-group.clearfix
+              .col-sm-6
+                label(for="mobileNumber2") Mobile*
+                .inputs
+                  input#mobileNumber2.form-control(type="number" name="mobileNumber2" required
+                    data-ng-model="user.book.mobileNumber"
+                    data-ng-class="{'input-valid': planBookForm.mobileNumber2.$dirty && planBookForm.mobileNumber2.$valid,"+
+                    "'input-error' : planBookForm.mobileNumber2.$dirty && planBookForm.mobileNumber2.$error.required,"+
+                    "'input-warning' : planBookForm.mobileNumber2.$dirty && planBookForm.mobileNumber2.$invalid && !planBookForm.mobileNumber2.$error.required"+
+                    "}"
+                    placeholder = "10 digit mobile no"
+                  )
+              .col-sm-6
+                label(for="altMobileNumber2") Alt. Mobile*
+                .inputs
+                  input#altMobileNumber2.form-control(
+                     type="number" name="altMobileNumber2" required
+                     data-ng-model="user.book.altMobileNumber"
+                     data-ng-class="{'input-valid': planBookForm.altMobileNumber2.$dirty && planBookForm.altMobileNumber2.$valid,"+
+                     "'input-error' : planBookForm.altMobileNumber2.$dirty && planBookForm.altMobileNumber2.$error.required,"+
+                     "'input-warning' : planBookForm.altMobileNumber2.$dirty && planBookForm.altMobileNumber2.$invalid && !planBookForm.altMobileNumber2.$error.required"+
+                     "}"
+                     placeholder = "alternate 10 digit mobile no"
+                    )
+            .form-group.clearfix
+              .col-sm-6
+                label(for="numOfPeople2") Number of people*
+                .inputs
+                  input#numOfPeople2.form-control(type="number" name="numOfPeople2"  required
+                    data-ng-model="user.book.numOfPeople"
+                     data-ng-class="{'input-valid': planBookForm.numOfPeople2.$dirty && planBookForm.numOfPeople2.$valid,"+
+                     "'input-error' : planBookForm.numOfPeople2.$dirty && planBookForm.numOfPeople2.$error.required,"+
+                     "'input-warning' : planBookForm.numOfPeople2.$dirty && planBookForm.numOfPeople2.$invalid && !planBookForm.numOfPeople2.$error.required"+
+                     "}"
+                     placeholder = "total persons"
+                  )
+              .col-sm-6
+                label(for="expectedBudget") Expected Budget* <am>( per person )</em>
+                .inputs
+                  i.fa.fa-inr
+                  select#expectedBudget(name="expectedBudget" ng-init="user.book.expectedBudget='4000 - 6000'" ng-model="user.book.expectedBudget" required)
+                    option(ng-repeat="budget in expectedBudgetPerPerson" value="{{budget}}") {{budget}}
+            .form-group.clearfix
+              .col-sm-6
+                label(for="year2") Journey starting date*
+                .form-inline
+                  select#year2( name="year" ng-model="user.startingDateYear"    ng-options="year for year in years")
+                  label(for="month2" style="display: inline;")
+                  select#month2(name="month" ng-model="user.startingDateMonth"    ng-options="month for month in months")
+                  label(for="day2" style="display: inline;")
+                  select#day2(name="day" ng-model="user.startingDateDay"    ng-options="day for day in days")
+                span.error.text-muted( ng-show="planTripForm.year.$error.required || planTripForm.month.$error.required || planTripForm.day.$error.required") Field Required!
+              .col-sm-3
+                label(for="typeOfTrip") Type of Trip*
+                .inputs
+                  select#typeOfTrip.form-control(name="typeOfTrip" ng-init="user.book.typeOfTrip='Family'" data-ng-model="user.book.typeOfTrip" required)
+                    option(ng-repeat="tripType in typeOfTrips" value="{{tripType}}") {{tripType}}
+              .col-sm-3
+                label(for="tripDuration") Trip Duration
+                .inputs
+                  input#tripDuration.form-control(
+                     type="number" name="tripDuration" required
+                     data-ng-model="user.book.tripDuration"
+                     data-ng-class="{'input-valid': planBookForm.tripDuration.$dirty && planBookForm.tripDuration.$valid,"+
+                      "'input-error' : planBookForm.tripDuration.$dirty && planBookForm.tripDuration.$error.required,"+
+                      "'input-warning' : planBookForm.tripDuration.$dirty && planBookForm.tripDuration.$invalid && !planBookForm.tripDuration.$error.required"+
+                      "}" 
+                    placeholder = "number of days"
+                    )
+        .panel.panel-default
+          .panel-heading
+            span.h4 Travel Information
+          .panel-body      
+            .form-group.clearfix
+              .col-sm-6
+                label(for="originCity") Origin City*
+                .inputs
+                  input#originCity.form-control(
+                    type="text" name="originCity" required data-ng-model="user.book.originCity"
+                    data-ng-class="{'input-valid' : planBookForm.originCity.$dirty && planBookForm.originCity.$valid,"+
+                    "'input-error' : planBookForm.originCity.$dirty && planBookForm.originCity.$error.required"+
+                    "}"
+                    placeholder = "origin city"
+                    )
+              .col-sm-6
+                label(for="returningCity") Returning City*
+                .inputs
+                  input#returningCity.form-control(
+                    type="text" name="returningCity"  required data-ng-model="user.book.returningCity"
+                    data-ng-class="{'input-valid' : planBookForm.returningCity.$dirty && planBookForm.returningCity.$valid,"+
+                      "'input-error' : planBookForm.returningCity.$dirty && planBookForm.returningCity.$error.required"+
+                    "}" 
+                    placeholder = "return city"
+                    )   
+            .form-group.clearfix
+              .col-sm-3
+                label Travel Preferences
+              .inputs.rad-check.col-sm-7(data-ng-init="user.book.travelPref = 'Train'; user.book.travelBy = 'Sleeper'")
+                .rad-select-container.form-inline
+                  input(type="radio" name="travelPref"  data-ng-model="user.book.travelPref" value="Train" id="travelPef1"  ng-click="user.book.travelBy = 'Sleeper'")
+                  label(for="travelPef1") Train 
+                  label(for="travel1Options") 
+                  select#travel1Options.form-control(name="travel1Options" ng-show="user.book.travelPref == 'Train'"  data-ng-model="user.book.travelBy")
+                    option(ng-repeat="option in trainOptions" value="{{option}}")  {{option}}   
+                .rad-select-container.form-inline
+                  input#travelPef2(type="radio" name="travelPref" data-ng-model="user.book.travelPref"  value="flight" ng-click="user.book.travelBy = 'Economy Class'")
+                  label(for="travelPef2") Flight 
+                  label(for="travel2Options") 
+                  select#travel2Options.form-control(name="travel3Options" ng-show="user.book.travelPref == 'flight'"  data-ng-model="user.book.travelBy")
+                    option(ng-repeat="option in flightOptions" value="{{option}}") {{option}}
+                .rad-select-container.form-inline
+                  input#travelPef3( type="radio" name="travelPref" data-ng-model="user.book.travelPref" value="others" ng-click="user.book.travelBy = 'Bus'")
+                  label(for="travelPef3") Others
+                  label(for="travel3Options") 
+                  select#travel3Options.form-control(name="travel3Options" ng-show="user.book.travelPref == 'others'"  data-ng-model="user.book.travelBy")
+                    option(ng-repeat="option in otherOptions" value="{{option}}") {{option}}
+        .panel.panel-default
+          .panel-heading
+            span.h4 Accommodation Information 
+          .panel-body 
+            .form-inline.clearfix
+              .col-sm-3
+                label Hotel Preferences*  
+              .col-sm-9
+                .col-md-4.col-sm-6.col-xs-12(data-ng-repeat="hotelPref in allHotels")
+                  input(type="checkbox"
+                    data-ng-model="user.book.hotelPref[$index]"
+                    data-ng-required="!anyCheckboxSelected(user.book.hotelPref)"
+                    )
+                  span {{hotelPref}}         
+            .form-inline.clearfix
+              .col-sm-3
+                label Amenities Preferred*
+              .col-sm-9
+                .col-sm-4(data-ng-repeat="amenities in allAmenities")
+                  input(type="checkbox"
+                    data-ng-model="user.book.amenitiesPref[$index]"
+                    data-ng-required="!anyCheckboxSelected(user.book.amenitiesPref)"
+                    )
+                  span {{amenities}}
+        .panel.panel-default
+          .panel-heading
+            span.h4 Others
+          .panel-body
+            .form-group
+              label(for="aboutMeUs") About Me/Us* <em>( word limit 300 characters )</em>            
+              .inputs
+                textarea#aboutMeUs.form-control(
+                  name="aboutMeUs"   rows="4"   required
+                  placeholder="Write something about, yourself or about your group, to let us know about you."
+                  data-ng-model="user.book.aboutMeUs"
+                  data-ng-maxlength="300"
+                  data-ng-class="{'input-valid': planBookForm.aboutMeUs.$dirty && planBookForm.aboutMeUs.$valid,"+
+                    "'input-error' : planBookForm.aboutMeUs.$dirty && planBookForm.aboutMeUs.$error,"+
+                    "'input-warning' : planBookForm.aboutMeUs.$dirty && planBookForm.aboutMeUs.$invalid && !planBookForm.aboutMeUs.$error"+
+                    "}"
+                  )
+                .error-container(data-ng-show="planBookForm.aboutMeUs.$error.maxlength") Exceed max length
+            .form-group
+              label(for="moreAboutTrip") More About Trip* <em>( word limit 300 characters )</em>     
+              .inputs
+                textarea#moreAboutTrip.form-control(
+                  name="moreAboutTrip"  rows="4"  required
+                  placeholder="Any Special things you want from this trip?"
+                  data-ng-model="user.book.moreAboutTrip"
+                  data-ng-maxlength="300"
+                  data-ng-class="{'input-valid': planBookForm.moreAboutTrip.$dirty && planBookForm.moreAboutTrip.$valid,"+
+                      "'input-error' : planBookForm.moreAboutTrip.$dirty && planBookForm.moreAboutTrip.$error,"+
+                      "'input-warning' : planBookForm.moreAboutTrip.$dirty && planBookForm.moreAboutTrip.$invalid && !planBookForm.moreAboutTrip.$error"+
+                  "}"
+                  )
+                .error-container(data-ng-show="planBookForm.moreAboutTrip.$error.maxlength") Exceed max length
+            .form-group
+              .some-info
+                p * Indicates fields are mandatory to fill.
+            .form-group
+              .proceed-group.row
+                .col-sm-6
+                  span.valid-form(ui-sref="planATrip" data-ng-click="processToAddAttraction()")
+                    i.fa.fa-arrow-left
+                    | Go back
+                .col-sm-6
+                  span(data-ng-class="{'valid-form': planBookForm.$valid}" data-ng-click="proceedToSubmitThePlan(user.book,planBookForm.$valid)") Preview and Submit    
+              
+style.
+  .inputs input.ng-invalid.ng-touched {
+    border: 1px solid #FA787E;
+  }
+
+  .inputs textarea.ng-invalid.ng-touched {
+      border: 1px solid #FA787E;
+  }
+
+  .inputs input.ng-valid.ng-touched {
+    border: 1px solid #78FA89;
+  }
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6 , .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xxs-1, .col-xxs-10, .col-xxs-11, .col-xxs-12, .col-xxs-2, .col-xxs-3, .col-xxs-4, .col-xxs-5, .col-xxs-6, .col-xxs-7, .col-xxs-8, .col-xxs-9 {
+    padding-left:15px;
+    padding-right:15px;
+  }

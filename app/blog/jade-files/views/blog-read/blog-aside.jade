@@ -1,0 +1,12 @@
+mixin trending-item(recogId, imgSrc, title)
+	a.smbgcard(ui-sref="blog({'blogRecogId': '#{recogId}' })")
+		.img
+			img(ng-src="./img/blogs/#{recogId}/#{imgSrc}", alt="blog-photo")
+		.title
+			h1=title   
+	
+aside.blogs
+	h1.related Related Blogs...
+	ul
+		li(data-ng-repeat="blog in relatedBlogs") 
+			+trending-item('{{blog.recogId}}', '{{blog.thumbImg}}', '{{blog.title}}')  

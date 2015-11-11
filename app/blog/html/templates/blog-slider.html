@@ -1,0 +1,19 @@
+
+<div class="slider">
+  <div ng-repeat="item in items" ng-show="item &amp;&amp; item.visible" class="slide">
+    <div ng-style="{'background-image':'url(./img/blogs/'+item.recogId+'/'+item.img+')'}" class="img"></div>
+    <div class="content">
+      <h2>{{item.title}}</h2>
+      <p>{{item.shortInfo}} </p>
+    </div>
+    <div class="action">
+      <ul>
+        <li> <span><i class="fa fa-clock-o"> </i></span>&nbsp; {{item.readTime}} minutes</li>
+        <li><span><i class="fa fa-calendar"></i></span>&nbsp; {{item.publishedDate}}</li>
+        <li>	<a ui-sref="blog({'blogRecogId':item.recogId})" class="btn">Read...</a></li>
+      </ul>
+    </div>
+  </div>
+  <div href="" ng-click="prev()" class="arrows left"><i class="fa fa-angle-left"></i></div>
+  <div href="#" ng-click="next()" class="arrows right"><i class="fa fa-angle-right"></i></div>
+</div>

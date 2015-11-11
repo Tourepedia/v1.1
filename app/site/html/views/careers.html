@@ -1,0 +1,96 @@
+
+<div data-ng-controller="CareerController" class="careers-container">
+  <div class="container">
+    <h3 class="title"><span>Careers</span></h3>
+    <div class="careers-need">
+      <p>Tourepedia is a travel company which values customer experience and strives to provide meaningful, enjoyable and memorable activities during trips. Apart from the usual sightseeing tours, we also provide exciting activities such as camping, rafting, bungee jumping, mountain biking among a host of other things to enhance the trip experience. <br/>We emphasize on all crucial customer aspects, and provide flexibility in terms of customization, budget, locations to ensure customer satisfaction. We maintain extensive relations with travel operators across different regions, and work to implement highest levels of customer service . We live by the motto: "Experiences Matter", and make every effort to ensure customer satisfaction is to the fullest.<br/><b>Future Plans: </b>We are looking to target customers across various age groups, with a special focus on youth. Our objective is to provide an enjoyable, hassle-free travel experience, and help people visit unexplored places, and beyond. Let us come together and set new benchmarks for the tourism industry.<br/><b>Growth:</b>Tourepedia has had 150 satisfied customers during its pilot phase. We formally launched on the 7th of July,2015 and are operating successfully since then. We are now aiming to achieve a target of about 120 trips/month by December, 2015.</p>
+    </div>
+    <div data-ng-init="showMe = false" class="row careers-options">
+      <div data-ng-repeat="job in availableJobs" class="col-sm-6">
+        <div class="careers-option">
+          <header style="cursor: pointer" data-ng-click="showMe = !showMe" class="row">
+            <div class="job-title col-sm-7 col-xs-6">{{job.title}}</div>
+            <div class="job-duration col-sm-5 col-xs-6">Duration: {{job.duration}} &nbsp;<i data-ng-show="!showMe" class="fa fa-angle-down"></i><i data-ng-show="showMe" class="fa fa-angle-up"></i></div>
+          </header>
+          <div data-ng-show="showMe" class="show-on-need">
+            <section class="job-description">
+              <h3>Description</h3>
+              <p>{{job.description}}</p>
+            </section>
+            <section class="job-responsibilities">
+              <h3>Responsibilities</h3>
+              <ul>
+                <li data-ng-repeat="responsibility in job.responsibilities">{{responsibility}}</li>
+              </ul>
+            </section>
+            <section class="job-perks">
+              <h3>Perks</h3>
+              <ul>
+                <li data-ng-repeat="perk in job.perks">{{perk}}</li>
+              </ul>
+            </section>
+            <section class="job-apply">
+              <button data-ng-click="setSelectedJob(job)" onclick="LaunchDialog('job-apply-dialog')">Apply Now</button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="job-apply-dialog" class="dialog-box xl">
+    <div class="dialog-box-container">
+      <div class="fake-box-body">
+        <div class="fake-close-button"></div>
+      </div>
+      <div class="dialog-box-body">
+        <div class="job-apply-container">
+          <div class="header">
+            <p>{{applicant.jobTitle}}</p>
+          </div>
+          <form name="jobApplyForm" role="form" novalidate="novalidate" data-ng-submit="submitJobApplication()">
+            <div class="row">
+              <label for="applicantName" class="col-md-3">Name*</label>
+              <div class="col-md-9">
+                <input id="applicantName" type="text" name="applicantName" required="required" data-ng-model="applicant.name" data-ng-class="{'error': jobApplyForm.applicantName.$dirty &amp;&amp; jobApplyForm.applicantName.$error.required}"/>
+              </div>
+            </div>
+            <div class="row">
+              <label for="applicantEmail" class="col-md-3">Email*</label>
+              <div class="col-md-9">
+                <input id="applicantEmail" type="email" name="applicantEmail" required="required" data-ng-model="applicant.email" data-ng-class="{'error': jobApplyForm.applicantEmail.$dirty &amp;&amp; (jobApplyForm.applicantEmail.$error.required || (jobApplyForm.applicantEmail.$touched &amp;&amp; jobApplyForm.applicantEmail.$invalid))}"/>
+              </div>
+            </div>
+            <div class="row">
+              <label for="applicantMobile" class="col-md-3">Mobile Number*</label>
+              <div class="col-md-9">
+                <input id="applicantMobile" type="number" name="applicantMobile" required="required" data-ng-model="applicant.mobileNumber" data-ng-class="{'error': jobApplyForm.applicantMobile.$dirty &amp;&amp; (jobApplyForm.applicantMobile.$error.required || (jobApplyForm.applicantMobile.$touched &amp;&amp; jobApplyForm.applicantMobile.$invalid))}"/>
+              </div>
+            </div>
+            <div class="row">
+              <label for="applicantGitHub" class="col-md-3">GitHub Profile</label>
+              <div class="col-md-9">
+                <input id="applicantGitHub" type="url" name="applicantGitHub" data-ng-model="applicant.gitHub" data-ng-class="{'error':jobApplyForm.applicantGitHub.$touched &amp;&amp; jobApplyForm.applicantGitHub.$invalid}"/>
+              </div>
+            </div>
+            <div class="row">
+              <label for="applicantLinkedin" class="col-md-3">Linkedin Profile</label>
+              <div class="col-md-9">
+                <input id="applicantLinkedin" type="url" name="applicantLinkedin" data-ng-model="applicant.linkedin" data-ng-class="{'error':jobApplyForm.applicantLinkedin.$touched &amp;&amp; jobApplyForm.applicantLinkedin.$invalid}"/>
+              </div>
+            </div>
+            <div class="row">
+              <label for="applicantExperience" class="col-md-3">Past Experience*</label>
+              <div class="col-md-9">
+                <textarea id="applicantExperience" rows="5" name="applicantExperience" required="required" data-ng-model="applicant.pastExperience" data-ng-maxlength="500" placeholder="Upto 500 characters" data-ng-class="{'error': jobApplyForm.applicantExperience.$dirty &amp;&amp; ( jobApplyForm.applicantExperience.$error.required || jobApplyForm.applicantExperience.$error.maxlength || (jobApplyForm.applicantExperience.$touched &amp;&amp; jobApplyForm.applicantExperience.$invalid))}"></textarea>
+              </div>
+            </div>
+            <div class="submit">
+              <button type="submit" data-ng-disabled="jobApplyForm.$invalid">Submit</button><span data-ng-show="submittingJobApplication"><i class="fa fa-spinner fa-spin fa-lg"></i></span>
+            </div>
+          </form>
+        </div>
+        <div onClick="CloseDialog('job-apply-dialog')" class="dialog-close-button">&times;</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+
+sectionblogread(data-ng-controller="BlogController")
+	div.blogread
+		ui-view.mainblog(name="content")
+		ui-view.relatedblog(name="aside")
+	ui-view(name="comments")
+	ui-view(name="author")

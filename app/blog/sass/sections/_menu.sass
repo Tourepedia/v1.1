@@ -1,0 +1,128 @@
+
+.menu-top
+	background-color: $menu-theme-color
+	background-color: $menu-theme-color
+	padding: 0 5px
+	height: 80px
+	display: flex
+	justify-content: space-between
+	flex-direction: row
+	align-items: center
+	
+.logo
+	display: block
+	height:80px
+	width: 200px	
+	position: relative
+	img
+		height: 100%
+		width: auto	
+		
+.search-container
+	li
+		display: block	
+		position: relative
+	li.search
+		text-align: center
+		font-size: 0
+		border: 2px solid white
+		background-color: white
+		transition: ease-in
+		transition-duration: 0.3s
+		input 
+			height: 27px
+			width: 20vw
+			font-size: 14px
+			background-color: white
+			border: none
+			outline: none
+			display: inline-block
+			vertical-align: middle
+			color: $menu-theme-color
+			transition: ease-out
+			transition-duration: 0.2s		
+			&::-webkit-input-placeholder
+				color: $menu-theme-color
+			&:focus
+				width: 35vw
+				color: $menu-theme-color
+				height: 35px
+				font-size: 16px
+
+	
+		i 
+			display: inline-block
+			vertical-align: middle
+			padding: 5px
+			font-size: 15px
+			color: $menu-theme-color
+			background-color: white	
+	.search-result
+		visibility: hidden
+		transition: visibility .2s ease-in-out
+		ul
+			position: absolute
+			background-color: white
+			width: 100%
+			box-sizing: border-box
+			li
+				margin: 3px 0
+				padding-left: 24px
+				&:hover
+					background-color: whitesmoke
+	.focused + .search-result
+			visibility: visible
+ul.right-items 
+	text-align: right
+	margin-right: 10px
+	@media screen and (max-width: 680px)
+		display: none
+	li 
+		display: inline-block
+		margin: 0
+		&:first-child
+			padding-right: 5px
+		a 
+			color: white
+			font-size: 18px
+@media screen and (max-width: 680px)
+	.logo
+		position: relative
+		left: -10px
+		width: auto
+		padding:0
+	.searching
+		input:focus
+			width: 60vw
+			text-align: left	
+.menu-categories
+	ul
+		text-align: center
+		li 
+			display: inline-block
+			margin: 20px 10px
+			border: 1px solid $menu-theme-color
+			border-radius: 4px
+			background-color: transparent
+			padding: 0
+			a 
+				color: $menu-theme-color
+				text-transform: uppercase
+				font-size: 13px
+				padding: 8px 30px
+				height: 100%
+				transition: ease-out
+				transition-duration: 0.2s
+				&:hover
+					background-color: $menu-theme-color
+					border-color: $menu-theme-color
+					color: #e3e3e3
+					border-radius: 4px
+		.active
+			background-color: $menu-theme-color
+			border-color: $menu-theme-color
+			color: #e3e3e3
+			border-radius: 4px
+
+
+

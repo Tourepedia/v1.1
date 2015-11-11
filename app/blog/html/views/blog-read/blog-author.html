@@ -1,0 +1,17 @@
+
+<div class="aboutauthor">
+  <h1 class="head">About Author</h1>
+  <div class="content">
+    <div class="info">
+      <div class="autimage"><a ui-sref="authors({'id':author.id})"><img ng-src="./img/authors/{{author.img}}" alt="authors image"/></a></div>
+      <div class="autinfo">
+        <h1>{{author.name}}</h1>
+        <h3><a href="mailto:{{author.email}}">{{author.email}}</a></h3>
+      </div>
+      <div class="autcontact"><a id="fb" href="#"><i class="fa fa-facebook"></i></a><a id="tw" href="#"><i class="fa fa-twitter"></i></a><a id="go" href="#"><i class="fa fa-google-plus"></i></a></div>
+    </div>
+    <div class="content">
+      <p>{{author.bio}}</p>
+    </div>
+  </div>
+</div>

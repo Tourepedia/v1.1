@@ -1,0 +1,41 @@
+.form-radio-group, .form-checkbox-group
+    display: table
+    margin-top: 10px
+
+
+.form-radio, .form-checkbox
+    opacity: 0
+    position: absolute
+
+.form-radio-button, .form-checkbox-button
+    box-sizing: border-box
+    cursor: pointer
+    display: table-cell
+    float: left
+    height: 18px
+    margin: 2px 10px 0 0
+    position: relative
+    width: 18px
+
+.form-radio-button::after, .form-radio-button::before, .form-checkbox-button::after, .form-checkbox-button::before
+    box-sizing: border-box
+    content: ''
+    border-radius: 50%
+    display: block
+    height: 100%
+    position: absolute
+    width: 100%
+
+.form-checkbox-button::after, .form-checkbox-button::before
+    border-radius: 0
+
+.form-radio-button::after, .form-checkbox-button::after
+    border: 2px solid rgba(0, 0, 0, 0.7)
+
+.form-radio-button::before, .form-checkbox-button::before
+    background: rgba(0, 0, 0, 0.7)
+    transform: translateZ(0) scale(0)
+    transition: transform .3s
+
+.form-radio:checked + .form-radio-button::before, .form-checkbox:checked + .form-checkbox-button::before
+    transform: translateZ(0) scale(.5)

@@ -1,0 +1,116 @@
+
+<div id="auth-modal" tp-modal="tp-modal" class="modal"> 
+  <div data-ng-init="wantsLogin = false" class="modal-container">
+    <div class="modal-window">
+      <header class="modal-header">
+        <button data-ng-click="closeModal()" class="modal-header-close"> <i class="fa fa-close fa-lg"></i></button>
+        <div class="swap">
+          <section data-ng-class="{'active': !registrationSuccess}" class="swap-section down">
+            <h2 class="modal-header-title"> <span data-ng-class="{'active': wantsLogin}" data-ng-click="wantsLogin = true;">Login </span>| <span data-ng-class="{'active': !wantsLogin}" data-ng-click="wantsLogin = false;">Signup.</span></h2>
+            <p class="modal-header-subtitle">* Required Fields</p>
+          </section>
+          <section data-ng-class="{'active': registrationSuccess}" class="swap-section up">
+            <h2 class="modal-header-title">Registration Success <i class="fa fa-smile-o"></i></h2>
+          </section>
+        </div>
+      </header>
+      <div class="swap">
+        <section data-ng-class="{'active': wantsLogin &amp;&amp; !registrationSuccess}" class="swap-section left">
+          <form name="loginForm" novalidate="novalidate" data-ng-submit="login()" class="login-form">
+            <section class="modal-content">
+              <fieldset data-ng-show="loginError" class="form-error">{{loginError}}</fieldset>
+              <fieldset class="form-fieldset">
+                <div class="form-input-group">
+                  <label for="email" class="form-floatlabel">Email</label>
+                  <input id="email" type="email" input-val="input-val" name="user.email" data-ng-model="user.email" required="required" class="form-input"/><span class="form-required">*</span>
+                </div>
+                <div class="form-input-group">
+                  <label for="password" class="form-floatlabel">Password</label>
+                  <input id="password" type="password" input-val="input-val" name="user.password" data-ng-model="user.password" required="required" class="form-input"/><span class="form-required">*</span>
+                </div>
+              </fieldset>
+              <fieldset class="form-fieldset">
+                <div class="form-radio-group">
+                  <input id="keepLoggedIn" type="checkbox" name="user.wantLoggedIn" class="form-checkbox"/>
+                  <label for="keepLoggedIn" class="form-checkbox-button"></label>
+                  <label for="keepLoggedIn" class="form-label">Stay signed in.</label>
+                </div>
+              </fieldset>
+            </section>
+            <footer class="modal-footer">
+              <button type="submit" data-ng-disabled="loginForm.$invalid" class="modal-action btn">Login</button>
+            </footer>
+          </form>
+        </section>
+        <section data-ng-class="{'active': !wantsLogin &amp;&amp; !registrationSuccess}" class="swap-section right">
+          <form name="signupForm" novalidate="novalidate" data-ng-submit="register()" class="signup-form">
+            <section class="modal-content row">
+              <fieldset data-ng-show="registrationError" class="form-error">{{registrationError}}</fieldset>
+              <ng-form name="userInfoForm" data-ng-class="{'col-md-6': newUser.isAuthor}">
+                <fieldset class="form-fieldset">
+                  <div class="form-input-group">
+                    <label for="newUser-name" class="form-floatlabel">Name</label>
+                    <input id="newUser-name" type="text" input-val="input-val" name="newUser.name" data-ng-model="newUser.name" required="required" class="form-input"/><span class="form-required">*</span>
+                  </div>
+                  <div class="form-input-group">
+                    <label for="newUser-email" class="form-floatlabel">Email</label>
+                    <input id="newUser-email" type="email" input-val="input-val" name="newUser.email" data-ng-model="newUser.email" required="required" class="form-input"/><span class="form-required">*</span>
+                  </div>
+                  <div class="form-input-group">
+                    <label for="newUser-password" class="form-floatlabel">Password</label>
+                    <input id="newUser-password" type="password" input-val="input-val" name="newUser.password" data-ng-model="newUser.password" required="required" class="form-input"/><span class="form-required">*</span>
+                  </div>
+                  <div class="form-input-group">
+                    <label for="newUser-repassword" class="form-floatlabel">Retype Password</label>
+                    <input id="newUser-repassword" type="password" input-val="input-val" name="newUser.repassword" data-ng-model="newUser.repassword" required="required" class="form-input"/><span class="form-required">*</span>
+                  </div>
+                  <div class="form-radio-group">
+                    <input id="newUser-isAuthor" type="checkbox" name="newUser.isAuthor" data-ng-model="newUser.isAuthor" class="form-checkbox"/>
+                    <label for="newUser-isAuthor" class="form-checkbox-button"></label>
+                    <label for="newUser-isAuthor" class="form-label">Authors ?</label>
+                  </div>
+                </fieldset>
+              </ng-form>
+              <ng-form name="authorInfoForm" class="col-md-6">
+                <fieldset data-ng-show="newUser.isAuthor" class="form-fieldset">
+                  <div class="form-input-group">
+                    <label for="author-occupation" class="form-floatlabel">Occupation</label>
+                    <input id="author-occupation" type="text" input-val="input-val" name="newUser.occupation" data-ng-model="newUser.occupation" required="required" class="form-input"/><span class="form-required">*</span>
+                  </div>
+                  <div class="form-input-group">
+                    <label for="author-tagline" class="form-floatlabel">Tag Line</label>
+                    <input id="author-tagline" type="text" input-val="input-val" name="newUser.tagline" data-ng-model="newUser.tagline" required="required" class="form-input"/><span class="form-required">*</span>
+                  </div>
+                  <div class="form-input-group">
+                    <legend class="form-legend">Urls:<span class="form-required">*</span></legend>
+                    <div class="input-addons-group"><span class="addon"><i class="fa fa-facebook"></i></span>
+                      <input id="author-urls" input-val="input-val" type="url" name="newUser.urls.fb" data-ng-model="newUser.urls.fb" required="required" class="form-input"/>
+                    </div>
+                    <div class="input-addons-group"><span class="addon"><i class="fa fa-google-plus"></i></span>
+                      <input input-val="input-val" type="url" name="newUser.urls.gp" data-ng-model="newUser.urls.gp" required="required" class="form-input"/>
+                    </div>
+                    <div class="input-addons-group"><span class="addon"><i class="fa fa-twitter"></i></span>
+                      <input input-val="input-val" type="url" name="newUser.urls.tr" data-ng-model="newUser.urls.tr" required="required" class="form-input"/>
+                    </div>
+                  </div>
+                  <div class="form-input-group">
+                    <label for="author-bio" class="form-floatlabel">Bio</label>
+                    <textarea id="author-bio" input-val="input-val" name="newUser.bio" data-ng-model="newUser.bio" required="required" rows="5" class="form-input"></textarea><span class="form-required">*</span>
+                  </div>
+                </fieldset>
+              </ng-form>
+            </section>
+            <footer class="modal-footer">
+              <button type="submit" data-ng-disabled="userInfoForm.$invalid || (newUser.isAuthor &amp;&amp; authorInfoForm.$invalid)" class="modal-action btn btn-default">Register</button>
+            </footer>
+          </form>
+        </section>
+        <section data-ng-class="{'active': registrationSuccess}" class="swap-section down">
+          <section class="modal-content">
+            <h2 class="modal-message success"><i class="fa fa-check-circle"></i>&nbsp; Login <span data-ng-click="wantsLogin = true; registrationSuccess = false;" class="link">Now</span></h2>
+          </section>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

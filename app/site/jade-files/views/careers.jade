@@ -1,0 +1,79 @@
+mixin inputLabel(label, id1, type, model, class1)
+  .row
+    label.col-md-3(for=id1) #{label}
+    .col-md-9
+      input(id=id1 type=type name=id1
+        data-ng-model="applicant.#{model}"
+        data-ng-class="#{class1}"
+      )
+mixin inputLabelRequired(label, id1, type, model, class1)
+  .row
+    label.col-md-3(for=id1) #{label}*
+    .col-md-9
+      input(id=id1 type=type name=id1 required
+        data-ng-model="applicant.#{model}"
+        data-ng-class="#{class1}"
+      )
+.careers-container(data-ng-controller="CareerController")
+  .container
+    h3.title: span Careers
+    .careers-need
+      p Tourepedia is a travel company which values customer experience and strives to provide meaningful, enjoyable and memorable activities during trips. Apart from the usual sightseeing tours, we also provide exciting activities such as camping, rafting, bungee jumping, mountain biking among a host of other things to enhance the trip experience. 
+        br
+        | We emphasize on all crucial customer aspects, and provide flexibility in terms of customization, budget, locations to ensure customer satisfaction. We maintain extensive relations with travel operators across different regions, and work to implement highest levels of customer service . We live by the motto: "Experiences Matter", and make every effort to ensure customer satisfaction is to the fullest.
+        br
+        b Future Plans: 
+        | We are looking to target customers across various age groups, with a special focus on youth. Our objective is to provide an enjoyable, hassle-free travel experience, and help people visit unexplored places, and beyond. Let us come together and set new benchmarks for the tourism industry.
+        br  
+        b Growth:
+        | Tourepedia has had 150 satisfied customers during its pilot phase. We formally launched on the 7th of July,2015 and are operating successfully since then. We are now aiming to achieve a target of about 120 trips/month by December, 2015.
+    .row.careers-options(data-ng-init="showMe = false")
+      .col-sm-6(data-ng-repeat="job in availableJobs")
+        .careers-option
+          header.row(style="cursor: pointer" data-ng-click="showMe = !showMe")
+            .job-title.col-sm-7.col-xs-6 {{job.title}}
+            .job-duration.col-sm-5.col-xs-6 Duration: {{job.duration}} &nbsp;
+              i.fa.fa-angle-down(data-ng-show="!showMe")
+              i.fa.fa-angle-up(data-ng-show="showMe")
+          .show-on-need(data-ng-show="showMe")
+            section.job-description
+              h3 Description
+              p {{job.description}}
+            section.job-responsibilities
+              h3 Responsibilities
+              ul
+                li(data-ng-repeat="responsibility in job.responsibilities") {{responsibility}}
+              
+            section.job-perks
+              h3 Perks
+              ul
+                li(data-ng-repeat="perk in job.perks") {{perk}}
+            section.job-apply
+              button(data-ng-click="setSelectedJob(job)" onclick="LaunchDialog('job-apply-dialog')") Apply Now
+  #job-apply-dialog.dialog-box.xl
+    .dialog-box-container
+      .fake-box-body
+        .fake-close-button
+      .dialog-box-body
+        .job-apply-container
+          .header
+            p {{applicant.jobTitle}}
+          form(name="jobApplyForm" role="form" novalidate data-ng-submit="submitJobApplication()")
+            +inputLabelRequired('Name','applicantName' , 'text', 'name', "{'error': jobApplyForm.applicantName.$dirty && jobApplyForm.applicantName.$error.required}")
+            +inputLabelRequired('Email','applicantEmail' , 'email', 'email', "{'error': jobApplyForm.applicantEmail.$dirty && (jobApplyForm.applicantEmail.$error.required || (jobApplyForm.applicantEmail.$touched && jobApplyForm.applicantEmail.$invalid))}")
+            +inputLabelRequired('Mobile Number','applicantMobile' , 'number', 'mobileNumber', "{'error': jobApplyForm.applicantMobile.$dirty && (jobApplyForm.applicantMobile.$error.required || (jobApplyForm.applicantMobile.$touched && jobApplyForm.applicantMobile.$invalid))}")
+            +inputLabel('GitHub Profile','applicantGitHub' , 'url', 'gitHub', "{'error':jobApplyForm.applicantGitHub.$touched && jobApplyForm.applicantGitHub.$invalid}")
+            +inputLabel('Linkedin Profile','applicantLinkedin' , 'url', 'linkedin', "{'error':jobApplyForm.applicantLinkedin.$touched && jobApplyForm.applicantLinkedin.$invalid}")    
+            .row
+              label.col-md-3(for="applicantExperience") Past Experience*
+              .col-md-9
+                textarea#applicantExperience(rows="5" name="applicantExperience"  required
+                data-ng-model="applicant.pastExperience"
+                data-ng-maxlength="500"
+                placeholder="Upto 500 characters"
+                data-ng-class="{'error': jobApplyForm.applicantExperience.$dirty && ( jobApplyForm.applicantExperience.$error.required || jobApplyForm.applicantExperience.$error.maxlength || (jobApplyForm.applicantExperience.$touched && jobApplyForm.applicantExperience.$invalid))}"
+                )
+            .submit
+              button(type="submit" data-ng-disabled="jobApplyForm.$invalid") Submit
+              span(data-ng-show="submittingJobApplication"): i.fa.fa-spinner.fa-spin.fa-lg
+        .dialog-close-button(onClick="CloseDialog('job-apply-dialog')") &times;

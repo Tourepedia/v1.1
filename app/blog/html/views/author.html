@@ -1,0 +1,19 @@
+
+<section data-ng-controller="AuthorsController" class="author">
+  <div class="autimage"><img ng-src="./img/authors/{{author.img}}" alt="authors image"/></div>
+  <div class="autinfo">
+    <h1>{{author.name}}</h1>
+    <h3>{{author.occupation}}</h3>
+    <h3>{{author.tagline}}</h3>
+  </div>
+  <div class="autcontact"><a href="{{author.urls.fb}}" target="_blank"><i id="fb" class="fa fa-facebook"></i></a><a href="{{author.urls.tr}}" target="_blank"><i id="tw" class="fa fa-twitter"></i></a><a href="{{author.urls.gp}}" target="_blank"><i id="go" class="fa fa-google-plus"></i></a></div>
+  <section class="section-more-blogs">
+    <hr/>
+    <ul>
+      <blog-info data-ng-repeat="blog in author.blogs" blog="blog"></blog-info>
+    </ul>
+    <div class="action">
+      <button data-ng-click="loadMore()" data-ng-disable="loadingMore" data-ng-show="moreAvailable" class="btn cta">Load More...</button>
+    </div>
+  </section>
+</section>

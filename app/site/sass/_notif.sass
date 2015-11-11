@@ -1,0 +1,26 @@
+#notification
+  position: fixed
+  right: 100%
+  top: 20px
+  background: rgb(52, 73, 94)
+  z-index: 2000
+  padding: 10px 10px 10px 15px
+  box-shadow: -1px 1px 5px black
+  border-radius: 25px 0 0 25px
+  color: white
+  font-weight: 100
+  letter-spacing: .05em
+
+@keyframes notification-animation
+  0%
+    right: -100%
+  20%
+    right: 0
+  80%
+    right: 0
+  100%
+    right: -100%
+
+.play-animation
+  animation-name: notification-animation
+  animation-iteration-count: 1

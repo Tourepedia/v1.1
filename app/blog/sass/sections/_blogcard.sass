@@ -1,0 +1,80 @@
+.blogcard
+	font-size: 0
+	width: 450px
+	height: auto
+	margin: 20px 10px
+	transition: ease-out
+	transition-duration: 0.2s
+	background-color: white
+	box-shadow: $shadow-card
+	display: inline-block
+	text-align: left
+	&:hover
+		box-shadow: 0px 6px 20px #afafaf
+	.img_part
+		height: 450px
+		width: 100%
+		background:
+			size: cover
+			position: center center
+		overflow: hidden
+		img
+			height: 450px
+			width: 450px
+		p 
+			width: 100%
+			height: 70px
+			background-color: rgba(0,0,0,0.5)
+			font-size: 20px
+			color: white
+			display: inline-flex
+			line-height: 70px	
+			margin-top: 380px
+			padding-left: 20px
+	.info
+		background-color: white
+		color: black
+		display: flex
+		flex-wrap: wrap
+		z-index: 100
+		height: 100px
+		font-size: 15px
+		padding: 20px
+		box-sizing: border-box
+		width: 450px
+		position: relative
+		p 
+			text-align: justify
+			padding-bottom: 10px
+			height: 60px
+			overflow: hidden
+		button
+			font-size: 10px
+			color: white
+			position: absolute
+			bottom: 20px
+			right: 20px
+			z-index: 2
+	.info::after
+			content: ''
+			height: 25px
+			width: 100%
+			background: linear-gradient(transparent ,  white)
+			position: relative
+			bottom: 25px
+			z-index: 1
+	.info_sub
+		width: calc(100% - 40px)
+		background-color:white
+		box-sizing: border-box
+		border-top: 1px solid rgba(0,0,0,0.2)
+		padding:20px 0
+		margin: 0 20px
+		ul 
+			text-align: center
+			li 
+				display: inline
+				font-size: 11px
+				padding:0px 8px
+			i
+				margin: 0 5px 0 0 

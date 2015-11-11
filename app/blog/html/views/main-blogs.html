@@ -1,0 +1,16 @@
+
+<section>
+  <div data-ng-controller="MainBlogsController">
+    <div data-ng-repeat="blog in mainBlogs">
+      <p>{{blog.title}}</p>
+      <p>{{blog.shortInfo}}</p><a ui-sref="blog({'blogRecogId':blog.recogId})">Read...</a>
+    </div>
+  </div>
+  <aside data-ng-controller="TrendingBlogsController">
+    <h4> Trending</h4>
+    <ul>
+      <li data-ng-repeat="blog in trending"> <a ui-sref="blog({'blogRecogId':blog.recogId})"><img ng-src="blog.thumbImg" alt="blog-image"/><span>{{blog.title}}</span></a>
+      </li>
+    </ul>
+  </aside>
+</section>

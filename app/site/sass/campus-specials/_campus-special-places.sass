@@ -1,0 +1,68 @@
+
+.places-container
+  position: relative
+  display: inline-block
+  vertical-align: top
+  width: calc( 100% - 270px)
+  box-sizing: border-box
+  min-width: 320px
+  .no-places, .places-fetching-in-progress
+    margin: 0px 10px
+    text-align: center
+    font-size: 30px
+    padding: 20px 0
+
+  .places-fetching-in-progress
+    color: white
+
+  .no-places
+    background: white
+    color: dimgray
+    border-radius: 3px
+
+  .place
+    display: inline-block
+    width: 33%
+    min-width: 320px
+    margin-bottom: 30px
+    box-sizing: border-box
+    text-align: center
+    .content
+      font-size: 18px
+      font-family: sans
+      color: #565656
+      .info-para
+        text-indent: 10px
+        text-align: justify
+        height: 100px
+        overflow-y: auto
+      .type-popularity
+        font-size: 14px
+    p.price
+      padding: 7px 0
+      font-weight: 600
+      .old-price
+        font-size: 14px
+        color: silver
+        text-decoration: line-through
+      .new-price
+        color: black
+
+
+    .image .title
+      font-size: 20px
+      padding: 2px 7px
+
+    &.card .image
+      height: 230px
+      background-position: center center
+      background-size: cover
+ 
+@media (max-width: 1250px)
+  .places-container .place
+    width: 47%
+
+
+@media (min-width: 1650px)
+  .places-container .place
+    width: 23%

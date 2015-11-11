@@ -1,0 +1,20 @@
+mixin categories(id, ...categories)
+  ul(id=id)
+    each category in categories
+      li: a(ui-sref="category({'category': '#{category}'})" ui-sref-active="active") #{category}
+
+.menu-top(data-ng-controller="MenuController")
+  a.logo(ui-sref="home"): img(src="./../shared/img/logo.png" alt="Logo")
+  ul.search-container
+    li.search
+      button(data-ng-click="search()") <i class="fa fa-search"></i>
+      input(input-val type="search" placeholder="type to search..." data-ng-model="blog.title")
+    li.search-result
+      ul
+        li(data-ng-repeat="blog in searchResults")
+          a(ui-sref="blog({'blogRecogId': blog.recogId})" data-ng-click="removeSearch()") {{blog.title}}
+  ul.right-items
+    li: a(href="./../") Plan Trip
+    li(data-ng-click="launchModal('auth-modal')"): a(href="") <i class="fa fa-user"></i>
+.menu-categories
+  +categories('category-list', 'Stories', 'Guest Authors', 'Adventure', 'Inspirational')

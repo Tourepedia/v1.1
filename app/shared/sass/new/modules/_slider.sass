@@ -1,0 +1,25 @@
+.slider 
+  position: relative
+  width: 100%
+  margin: auto
+  height: auto
+.slide 
+  display: inline-block
+  width: 100%
+  height: 100%
+  overflow: hidden
+.arrows 
+  position: absolute
+  height: 50px
+  width: 50px
+  top: calc(50% - 25px)
+  background: white
+  line-height: 50px
+  text-align: center
+  font-size: 30px
+  cursor: pointer
+  box-shadow: $shadow-card
+  &.left
+    left: 0
+  &.right
+    right: 0

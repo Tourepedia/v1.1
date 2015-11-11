@@ -1,0 +1,36 @@
+.menu-bar
+  section.filters-section
+    h3 Filter By
+    section.filters-subsection
+      h4 Offers
+        em: small 
+          | (valid till 10th Sept'15)
+      li
+        input#offerUpTo30(type="checkbox" data-ng-model="offerUpTo[0]")
+        label(for="offerUpTo30") Upto 30% Off
+    section.filters-subsection
+      h4 Type
+      li 
+        input#weekends(type="checkbox" data-ng-model="placeTypes[0]" data-ng-click="addTypeFilter('Weekends')")
+        label(for="weekends") Weekends
+      li
+        input#extendedWeekends(type="checkbox" data-ng-model="placeTypes[1]" data-ng-click="addTypeFilter('Extended Weekends')")
+        label(for="extendedWeekends") Extedned Weekends
+    section.filters-subsection
+      h4 Popularity
+      li 
+        input#unexplored(type="checkbox" data-ng-model="placePopular[0]" data-ng-click="addPopularityFilter('Unexplored')")
+        label(for="unexplored") Unexplored
+      li
+        input#popular(type="checkbox" data-ng-model="placePopular[1]" data-ng-click="addPopularityFilter('Popular')")
+        label(for="popular") Popular
+  section.sorts
+    h3 Sort By
+    section.sorts-subsection
+      h4 Price
+      li 
+        input#lowToHigh(type="radio" name="price-sort" data-ng-model="options.sortByPrice" data-ng-value="false")
+        label(for="lowToHigh") Low to high
+      li
+        input#highToLow(type="radio" name="price-sort" data-ng-model="options.sortByPrice" data-ng-value="true")
+        label(for="highToLow") High to low

@@ -1,0 +1,25 @@
+.campus-ambassador(data-ng-controller="AmbassadorController")
+  .container
+    h2.title 
+      span Campus Ambassador
+    p.moti-para The primary objective for a campus ambassador is to enhance the presence and impact of Tourepedia in the campus. He/she will be required to effectively communicate the vision and plans of Tourepedia to the campus community. This can be achieved using a variety of techniques, the details of which will be conveyed to them regularly. A campus ambassador is also responsible for inspiring people to travel, and provide information regarding Tourepedia’s services for the same.
+    form(name="campusAmbassador" novalidate data-ng-submit="submitAmbasodorApplication()")
+      h1 Apply
+      p 
+        label Name
+        input(type="text" data-ng-model="applicant.name" required autofocus)
+      p
+        label Email
+        input(type="email" data-ng-model="applicant.email" required)
+      p
+        label Mobile Number
+        input(type="number" data-ng-model="applicant.mobileNumber" required)
+      p 
+        label College name
+        input(type="text" data-ng-model="applicant.college" required )
+      p.submit
+        button(type="submit" data-ng-disabled="campusAmbassador.$invalid")
+          i.fa.fa-spin.fa-spinner(data-ng-show="submittingForm") 
+          | &nbsp; Submit
+    
+  

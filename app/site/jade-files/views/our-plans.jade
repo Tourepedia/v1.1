@@ -1,0 +1,49 @@
+mixin menu-bar(itemValue, title)
+  li(data-ng-click="item = #{itemValue}" data-ng-class="{'active':item==#{itemValue}}")
+    i.fa.fa-info.fa-fw &nbsp;
+    br
+    span #{title}
+.preplanned-attraction-container
+  .banner-container
+    .image-container.row
+      img.col-lg-6(src="./site/img/our-plans/{{ourPlanCurrent.our_trips_img1}}" err-src="./site/img/our-plans/default.png" alt="image")
+      img.col-lg-6(src="./site/img/our-plans/{{ourPlanCurrent.our_trips_img2}}" err-src="./site/img/our-plans/default.png" alt="image")
+      .description
+        p {{selectedPlaceInfo.place_name}}
+    .row.place-info-container(ng-init="item = 1")
+        .col-xs-3.menu-container
+          ul
+            +menu-bar('1', 'About')
+            +menu-bar('2', 'Travel')
+            +menu-bar('3', 'Sightseeing')   
+            +menu-bar('4', 'Stay')       
+            +menu-bar('5', 'Terms and conditions')
+        .col-xs-9.menu-item-values
+          .about(data-ng-show="item == 1")  {{ourPlanCurrent.our_trips_about[0]}}
+          .travel(data-ng-show="item == 2")
+            .travels(data-ng-repeat="travelType in ourPlanCurrent.our_trips_travel")
+              h3 {{travelType.travel_method}}
+              p {{travelType.travel_about}}
+          .sightseeing(data-ng-show="item == 3")
+            .travels(data-ng-repeat="sightScene in ourPlanCurrent.our_trips_sights")
+              h3 {{sightScene.sight_name}}
+              p {{sightScene.sight_about}}
+          .stay(data-ng-show="item == 4") {{ourPlanCurrent.plan_review}}
+            | Day wise Accommodation will be in Deluxe Rooms in the City specified as per your plan like- 3 days in X or 2 days in X and 2 days in Y. <br> you will get detailed information in the Blueprint of Trip, which will be given to you if you take a plan or book a trip.
+          .term-and-conditions(data-ng-show="item == 5")
+            li Extra Person : Children between 0 to 5 years- complimentary <br>
+            li Meals on travelling is not included in the package and shall be paid by the customer. <br>
+            li Entrance fees at any point shall be paid by customer. <br>
+            li Payment in full must be made at the time of booking your reservation. <br>
+            li No refund for short stay and un-availed facilities. <br>
+            li Package includes all applicable taxes. <br>
+            li Cancellation Policy : <br> 
+            li Plan is non refundable, but you can modify it. 1st time modification in plan is non-chargeable but will be charged for next modification. <br>
+            li for Plan and book i.e. Trip cancellation, fully/partially the following conditions will apply: <br> 60 days or before actual date of trip- 90% refund,60 days to 30 days of actual date of trip- 80% refund, 30 days to 15 days of actual date of trip- 70% refund, 15 days to 7 days of actual date of trip- 60% refund, 7 days to 72 hours from starting time of trip- 50% refund, Less than 72 hours- No refund <br>
+            li For Detailed Terms and conditions refer to the site www.Tourepedia.com
+        .col-xxs-12.proceed-group.row
+            .col-xs-6.col-xxs-12
+              span.valid-form(ui-sref="planATrip" data-ng-click="processToAddAttraction()")
+                i.fa.fa-arrow-left Go back
+            .col-xs-6.col-xxs-12
+              span(ui-sref="planATrip.proceed({'planningStage':'personal-information'})" data-ng-click="proceedToAddOurPlan(ourPlanCurrent.our_trips_id)") Proceed

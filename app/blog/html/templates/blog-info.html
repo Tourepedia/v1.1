@@ -1,0 +1,18 @@
+
+<li class="blogcard"> 
+  <div data-ng-style="{'background-image':'url(./img/blogs/'+blog.recogId+'/'+blog.img+')'}" class="img_part">
+    <p>{{blog.title}}</p>
+  </div>
+  <div class="info">
+    <p>{{blog.info}}</p>
+    <button ui-sref="blog({'blogRecogId':blog.recogId})" class="btn cta default">Read More</button>
+  </div>
+  <div class="info_sub">
+    <ul>
+      <li>Read Time: {{blog.readTime}}</li>
+      <li>Date: {{blog.date}}</li>
+      <li>By: {{blog.authorName}}</li>
+      <li>fb Shares: {{blog.socialShares}}</li>
+    </ul>
+  </div>
+</li>

@@ -1,0 +1,17 @@
+.form-input-group .form-label
+  display: inline-block
+  padding-top: 10px
+
+.form-floatlabel
+  display: block
+  cursor: text
+  margin-top: 5px
+  pointer-events: none
+  transform-origin: 0 100%
+  transform: translate3d(0, 22px, 0) scale(1)
+  transition: transform .2s
+
+.focused, .has-value
+  .form-floatlabel
+    cursor: default
+    transform: translate3d(0, 0, 0) scale(.75)

@@ -1,0 +1,55 @@
+.author
+	.autimage
+		display: block
+		text-align: center
+		img
+			height: 180px
+			width: 180px
+			border: 2px solid white
+			border-radius: 50%
+			display: block
+			margin: 0px auto
+			box-shadow: $shadow-card
+	.autinfo
+		h1
+			text-align: center
+			padding-top: 20px
+			font-weight: normal
+			color: #29B6F6
+		h3
+			text-align: center
+			color: #555
+			font-weight: 500
+			padding-top: 5px
+			font-size: 18px
+	.autcontact
+		text-align: center
+		i 
+			padding-top: 15px
+			color: grey
+			transition: ease-out
+			transition-duration: 0.3s
+			font-size: 20px
+		i#fb:hover
+			color: blue
+		i#tw:hover
+			color: #29B6F6
+		i#go:hover
+			color: red
+		a:after
+			content: "|"
+			padding: 20px
+			font-size: 20px
+			color: lighten(grey,30)
+		a:last-child:after
+			content: none
+
+.author::after
+	content: "."
+	display: block
+	background: lighten(grey,20)
+	width: 90%
+	height: 1px
+	margin: 0 auto
+	font-size: 1px
+	margin-top: 40px

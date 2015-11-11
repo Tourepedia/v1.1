@@ -1,0 +1,26 @@
+
+<div data-ng-controller="MenuController" class="menu-top"><a ui-sref="home" class="logo"><img src="./../shared/img/logo.png" alt="Logo"/></a>
+  <ul class="search-container">
+    <li class="search">
+      <button data-ng-click="search()"><i class="fa fa-search"></i></button>
+      <input input-val="input-val" type="search" placeholder="type to search..." data-ng-model="blog.title"/>
+    </li>
+    <li class="search-result">
+      <ul>
+        <li data-ng-repeat="blog in searchResults"><a ui-sref="blog({'blogRecogId': blog.recogId})" data-ng-click="removeSearch()">{{blog.title}}</a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="right-items">
+    <li><a href="./../">Plan Trip</a></li>
+    <li data-ng-click="launchModal('auth-modal')"><a href=""><i class="fa fa-user"></i></a></li>
+  </ul>
+</div>
+<div class="menu-categories">
+  <ul id="category-list">
+    <li><a ui-sref="category({'category': 'Stories'})" ui-sref-active="active">Stories</a></li>
+    <li><a ui-sref="category({'category': 'Guest Authors'})" ui-sref-active="active">Guest Authors</a></li>
+    <li><a ui-sref="category({'category': 'Adventure'})" ui-sref-active="active">Adventure</a></li>
+    <li><a ui-sref="category({'category': 'Inspirational'})" ui-sref-active="active">Inspirational</a></li>
+  </ul>
+</div>

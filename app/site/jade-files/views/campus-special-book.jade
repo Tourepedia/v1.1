@@ -1,0 +1,92 @@
+mixin personType(label, focusVar, name)
+  .inputs-group(
+    data-ng-init="#{focusVar} = false"
+    data-ng-class="{'has-focus': #{focusVar},"+
+      "'has-value': campusSpecialForm.#{name}.$touched && campusSpecialForm.#{name}.$viewValue || user.#{name} && user.#{name} != ''"+
+      "}"
+    )
+    input(id=name type="number" name=name
+      data-ng-focus="#{focusVar} = true"
+      data-ng-blur="#{focusVar} = false"
+      data-ng-model="user.#{name}"
+    )
+    label(for=name) #{label}
+mixin textAreaLabel(label, focusVar, name, rows)
+  .inputs-group(
+    data-ng-init="#{focusVar} = false"
+    data-ng-class="{'has-focus': #{focusVar},"+
+      "'has-value' : campusSpecialForm.#{name}.$touched && campusSpecialForm.#{name}.$viewValue || user.#{name} && user.#{name} != '' "+
+      "}"
+    )
+    textarea(id=name name=name row=rows
+      data-ng-focus="#{focusVar} = true"
+      data-ng-blur="#{focusVar} = false"
+      data-ng-model="user.#{name}"
+    )
+    label(for=name) #{label}  
+mixin inputLabelRequired(label, focusVar, name, type)
+  .inputs-group(
+    data-ng-init="#{focusVar} = false"
+    data-ng-class="{'has-focus': #{focusVar},"+
+      "'has-error' : campusSpecialForm.#{name}.$touched && campusSpecialForm.#{name}.$error.required ,"+
+      "'has-value' : campusSpecialForm.#{name}.$touched && campusSpecialForm.#{name}.$viewValue || user.#{name} && user.#{name} != '' "+
+      "}"
+    )
+    input(id=name type=type name=name required
+      data-ng-focus="#{focusVar} = true"
+      data-ng-blur="#{focusVar} = false"
+      data-ng-model="user.#{name}"
+    )
+    label(for=name) #{label}*
+
+  
+mixin datePart(name, var1, arr)
+  .inputs-group
+    select(id=name name=name data-ng-options="#{var1} as #{var1} for #{var1} in #{arr}" required  data-ng-model="user.journeyStartingDate.#{name}")
+
+.campus-special-book-container
+  header
+    span.place-name {{selectedPlace.name}}
+    span.price(data-ng-show="selectedPlace.discountedPrice == ''"): i.fa.fa-inr {{selectedPlace.price}}**/-
+    span.price(data-ng-show="selectedPlace.discountedPrice != ''"): i.fa.fa-inr {{selectedPlace.discountedPrice}}**/-
+    span Trip Type: {{selectedPlace.type}}
+  .info-form
+    form.row(name="campusSpecialForm" data-ng-submit="submitPlan()" novalidate)
+      .col-sm-6.book-form-full-name
+        +inputLabelRequired('Full Name', 'fullNameFocus', 'fullName', 'text')  
+      .col-sm-6.book-form-email
+        +inputLabelRequired('Email', 'emailFocus', 'email', 'email')
+      .col-sm-6.book-form-mobile-number
+        +inputLabelRequired('Mobile Number', 'mobileNumberFocus', 'mobileNumber', 'number')
+      .col-sm-6.row.book-form-date(data-ng-init="user.journeyStartingDate = {'year': 2015, 'month': 'January', 'day': 1}")
+        .col-xxs-4
+          +datePart('year', 'year', 'years')
+        .col-xxs-5
+          +datePart('month', 'month', 'months')
+        .col-xxs-3
+          +datePart('day', 'day', 'days')
+      .col-sm-12.row
+        .col-sm-4.book-form-persons
+          +inputLabelRequired('Number Of Persons', 'numOfPersonsFocus', 'numOfPersons', 'number')
+        .col-sm-8(data-ng-show="campusSpecialForm.numOfPersons.$viewValue")
+          .col-xxs-4
+            +personType('Male', 'maleFocus', 'male')
+          .col-xxs-4
+            +personType('Children', 'childrenFocus', 'children')
+          .col-xxs-4
+            +personType('Female', 'femaleFocus', 'female')
+      .col-sm-6.book-form-address
+        +inputLabelRequired('Address', 'addressFocus', 'address', 'text')
+      .col-sm-12.book-form-queries
+        +textAreaLabel('Any Queries', 'queriesFocus', 'queries', '5')
+      .col-sm-12.book-form-info
+        p
+          input#agreement(type="checkbox" name="agreement" required data-ng-model="user.agreement")
+          label(for="agreement") By submitting this form, you are agree with our <a target="_blank" ui-sref="termConditions">Terms & Conditions</a> and <a target="_blank" ui-sref="privacyPolicies">Privacy Policies</a>.    
+          br
+          br
+          span ** Price may change depending upon number of people in the group.
+      .col-sm-12.book-form-submit
+        button(type="submit" data-ng-disabled="campusSpecialForm.$invalid") Submit
+          i.fa.fa-spin.fa-spinner.fa-lg(data-ng-show="submittingPlan")  
+          

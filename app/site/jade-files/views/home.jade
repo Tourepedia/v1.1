@@ -1,0 +1,13 @@
+.place-info.home( data-ng-controller="HomeViewController")
+  .background-image.image1(data-ng-class="{'image1' : firstTime, 'image2' : !firstTime}")
+    img(data-ng-src="./site/img/home/{{image1}}" alt="Back Image")
+  .background-image.image2
+    img(data-ng-src="./site/img/home/{{image2}}" alt="Back Image")
+  .place-info-container
+    .center-info-content.home-content
+      .top-stand
+      .value
+        p The journey of thousand miles starts with one stride.
+      .bottom-stand
+        .go-down-button
+          i.fa.fa-angle-down.fa-3x

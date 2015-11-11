@@ -1,0 +1,22 @@
+.btn
+  background: white
+  color: black
+  font-weight: bold
+  line-height: 1
+  padding: 10px 20px
+  border-radius: 3px
+  display: inline-block
+  letter-spacing: 1
+  text-transform: uppercase
+  text-decoration: none
+  box-shadow: $shadow-card
+  transition: all linear .15s
+  &.cta
+  	&:hover
+  		box-shadow: 0 2px 5px 2px rgba(0,0,0,.14)
+  &:disabled
+    cursor: not-allowed
+    color: rgba(0,0,0,.12)
+    background: rgba(158,158,158,.2)
+  &.default
+  	background: $clr-darkblue

@@ -1,0 +1,17 @@
+section.author(data-ng-controller="AuthorsController")
+	.autimage
+		img(ng-src="./img/authors/{{author.img}}", alt="authors image")
+	.autinfo
+		h1 {{author.name}}
+		h3 {{author.occupation}}
+		h3 {{author.tagline}}
+	.autcontact
+		a(href="{{author.urls.fb}}"  target="_blank"): i#fb.fa.fa-facebook
+		a(href="{{author.urls.tr}}"  target="_blank"): i#tw.fa.fa-twitter
+		a(href="{{author.urls.gp}}"  target="_blank"): i#go.fa.fa-google-plus
+	section.section-more-blogs
+		hr
+		ul
+			blog-info(data-ng-repeat="blog in author.blogs" blog="blog")
+		.action
+			button.btn.cta(data-ng-click="loadMore()" data-ng-disable="loadingMore" data-ng-show="moreAvailable") Load More...

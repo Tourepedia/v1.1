@@ -1,0 +1,48 @@
+.add-attractions
+  .add-attractions-container
+    .row
+      .col-sm-3.col-xs-6.attractions.selected-attractions
+        .head
+          p Selected attractions
+          span(data-ng-show="userAttractionsList.length == 0") Your attractions list is empty.
+        .attractions-container
+          .attraction(data-ng-repeat="attraction in user.attractionsList track by $index")
+            .title {{attraction.attraction_name}}
+            .remove-attraction
+              span(data-ng-click="removeAttractionFromList(attraction)"): i.fa.fa-remove
+      .col-sm-9.col-xs-6.row.attractions
+        .head
+          p Add attractions to your list
+        .attractions-container
+          .arrow.left(data-ng-show="showPre" data-ng-click="preAttractionsList()"): i.fa.fa-angle-left
+          .arrow.right(data-ng-show="showNext" data-ng-click="nextAttractionsList()"): i.fa.fa-angle-right
+          .col-lg-3.col-sm-4( data-ng-repeat="attraction in visibleAttractions track by $index")
+            .attraction
+              .title {{attraction.attraction_name}}
+              .image
+                img(data-ng-src="./site/img/attractions/{{attraction.attraction_image}}" alt="image" err-src="./site/img/attractions/default.jpg")
+              .attraction-info {{attraction.attraction_about}}
+              .add-attraction(title="Add Attraction"): span(data-ng-click="addAttractionToList(attraction)") +
+              .read-more(onclick="LaunchDialog('place-info-dialog')"  data-ng-click="setSelectedPlaceInfo(attraction)") read more...
+    .proceed-or-know
+      a(ui-sref="planATrip.proceed({'planningStage':'personal-information'})"
+      data-ng-click="proceedToAddPersonalInformation(user.attractionsList)") Proceed
+    .other-options(data-ng-show="ourPlansForThisPlace.length != 0")
+      p OR
+      h2 Select from our existing plans
+      .row.existing-plans
+        .col-sm-4.col-xs-6(data-ng-repeat="plans in ourPlansForThisPlace")
+          .existing-plan(ui-sref="planATrip.prePlansInfo({'prePlan':'our-plans'})" data-ng-click="showOurPlan(plans.our_trips_id)")
+            .days {{plans.our_trips_timeSpan}}
+            .plan-info
+              img(data-ng-src="./site/img/our-plans/{{plans.our_trips_img1}}" alt="image" err-src="./site/img/attractions/default.png")
+            .budget Starts at &nbsp; <i class="fa fa-inr"></i> {{plans.our_trips_cost}}
+  .dialog-box.lg#place-info-dialog
+    .dialog-box-container
+      .fake-box-body
+        .fake-close-button
+      .dialog-box-body
+        .selected-place-info
+          h2 {{selectedAttractionInfo.attraction_name}}
+          p {{selectedAttractionInfo.attraction_about}}
+        .dialog-close-button(class="dialog-close-button" onClick="CloseDialog('place-info-dialog')") X

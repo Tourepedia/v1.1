@@ -1,0 +1,145 @@
+/* place info css goes here*/
+
+
+.select-destination
+  overflow: hidden
+
+  .background-image
+    position: absolute
+    top : 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 0
+    overflow: hidden
+
+    img
+      display: block
+      width: 100%
+      height: auto
+
+.place-info
+  position: relative
+  background: black
+
+  .place-info-container
+    position: relative
+    z-index: 1
+    background: rgba(0, 0, 0, 0.2)
+
+  .center-info-content
+    padding-bottom: 60px
+    min-height: 70vh
+    max-width: 900px
+    margin: 0 auto
+    z-index: 3
+    position: relative
+
+    .info
+      background: rgba(255, 255, 255, 0.9)
+      height: auto
+      padding: 10px
+      width: auto
+
+      .content
+        box-sizing: border-box
+        padding: 10px
+        font-family: "Times New Roman", Helvetica, Arial, sans-serif
+        color: black
+
+        p
+          font-size: 18px
+          margin: 10px
+          letter-spacing: .04em
+          line-height: 1.5
+
+          .place-name
+            font-size: 26px
+            font-weight: bolder
+
+
+      .image
+        padding: 10px
+
+        img
+          display: block
+          width: 100%
+          height: auto
+          max-height: 200px
+          margin: 10px 0
+          border: 2px solid #000000
+
+
+      .proceed-button
+        padding: 10px 5px
+        text-align: center
+
+        a
+          border: 1px solid #000000
+          padding: 5px 20px
+          border-radius: 15px
+          font-size: 20px
+          font-weight: 600
+          transition: all .15s ease-in-out 0s
+
+          &:hover
+            background: #000000
+            color: #ffffff
+
+
+    .top-stand, .bottom-stand
+      position: relative
+      width: 1px
+      height: 50px
+      background: whitesmoke
+      margin: 0 auto
+
+
+    .top-stand::after
+      content: " "
+      width: 40px
+      height: 5px
+      background: white
+      position: absolute
+      bottom: 0
+      left: calc(50% - 20px)
+
+
+    .bottom-stand::before
+      content: " "
+      width: 40px
+      height: 5px
+      background: white
+      position: absolute
+      top: 0
+      left: calc(50% - 20px)
+
+
+.go-down-button
+  background: rgba(255, 255, 255, .5)
+  border-radius: 50%
+  line-height: 50px
+  text-align: center
+  box-shadow: 0 2px 3px black
+  position: absolute
+  bottom: -100%
+  left: calc(50% - 25px)
+  width: 50px
+  height: 50px
+
+
+  i
+    animation-name: up-down
+    animation-duration: 1s
+    animation-iteration-count: infinite
+    animation-direction: normal
+
+
+@keyframes up-down
+    0%
+        opacity: .5
+        transform: translate(0, -5px)
+
+    100%
+        opacity: 1
+        transform: translate(0, 5px)

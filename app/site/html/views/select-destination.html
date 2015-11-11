@@ -1,0 +1,27 @@
+
+<div data-ng-controller="PlaceInfoController" class="place-info select-destination">
+  <div class="background-image"><img data-ng-src="./site/img/home/{{images[selectedPlaceInfo.place_region_name]}}" alt="Back Image"/></div>
+  <div class="place-info-container">
+    <div class="center-info-content">
+      <div class="top-stand"></div>
+      <div class="info row">
+        <div class="content col-sm-9 col-xs-8">
+          <p><span class="place-name">{{selectedPlaceInfo.place_name}} <br /></span>{{selectedPlaceInfo.place_about}}  <br />
+            {{selectedPlaceInfo.place_feeling}}
+          </p>
+          <p><b>Best Time to visit :</b>{{selectedPlaceInfo.place_bestTime}} <br /><b>Nearby place to visit :</b>{{selectedPlaceInfo.place_near_by_places}} <br /><b>Location :</b>{{selectedPlaceInfo.place_sea_level}} above the sea level. <br /><b>Budget :</b>Starts At Rs. {{selectedPlaceInfo.place_ideal_budget}}/-<b>No. of Days :</b>{{selectedPlaceInfo.place_idealNo_days}} days</p>
+        </div>
+        <div class="col-sm-3 col-xs-4">
+          <div class="image"><img data-ng-src="./site/img/places-info/{{selectedPlaceInfo.place_img1}}" alt="place image"/><br><img data-ng-src="./site/img/places-info/{{selectedPlaceInfo.place_img2}}" alt="place image"/></div>
+        </div>
+        <div data-ng-click="processToAddAttraction()" class="proceed-button col-xs-12"><a ui-sref="planATrip">Proceed to Plan</a></div>
+      </div>
+      <div class="bottom-stand"></div>
+    </div>
+  </div>
+</div>
+<style>
+  .place-info .center-info-content {
+      padding-bottom: 0;
+  }
+</style>

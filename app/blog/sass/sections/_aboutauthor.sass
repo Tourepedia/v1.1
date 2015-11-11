@@ -1,0 +1,90 @@
+.aboutauthor
+	margin-bottom: 50px
+	background: #2c3e50
+	padding:20px
+	h1.head
+		text-align: center
+		font-weight: 300
+		font-size: 30px
+		padding: 20px
+		color: #ccc
+	.content
+		display: flex
+		@media screen and (max-width: 760px)
+			flex-wrap: wrap
+		.info
+			width: 192px
+			border-right: 1px solid white
+			@media screen and (max-width: 760px)
+				width: 100%
+				border: none
+			.autimage
+				display: block
+				text-align: center
+				img
+					height: 120px
+					width: 120px
+					border-radius: 75px
+					border: 2px solid white
+			.autinfo
+				h1
+					text-align: center
+					padding-top: 20px
+					font-weight: normal
+					color: white
+					font-size: 18px
+					font-weight: 400
+				h3
+					text-align: center
+					color: rgb(205, 204, 204)
+					font-weight: 500
+					padding-top: 5px
+					font-size: 14px
+			.autcontact
+				text-align: center
+				margin-top: 10px
+				a 
+					display: inline-block
+					border-radius: 50%
+					background: white
+					width: 40px
+					height: 40px
+					line-height: 40px
+					text-align: center
+					margin: 0 10px
+					transition: background ease-out 0.3s 
+
+					i 
+						color: grey
+						transition: color ease-out 0.3s 
+						font-size: 18px
+					&:hover
+						i
+							color: white
+				
+					&#fb:hover
+						background: #3b5998
+					&#tw:hover
+						background: #4099ff
+					&#go:hover
+						background: #db4a39
+						
+		.content
+			width: calc(100% - 192px)
+			@media screen and (max-width: 760px)
+				width: 100%
+			p 
+				display: inline-block
+				text-align: justify
+				padding: 50px
+				margin: 0 auto
+				font-weight: 300
+				color: white
+				font-size: 18px
+				line-height: 1.6
+				text-indent: 20px
+			@media screen and (max-width: 760px)
+				p 
+					padding: 50px 0
+
+

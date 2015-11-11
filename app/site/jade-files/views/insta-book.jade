@@ -1,0 +1,37 @@
+.insta-book-container(data-ng-controller="InstaBookController")
+  .container
+    p.problem Don't have time to surf the web or to crawling a website. 
+      | Just write us and we will in touch with you in a time.
+    hr  
+    form(name="instaBookForm" novalidate data-ng-submit="submitInstaBook()")
+      span Hi Tourepedia, <br>
+      p.letter-body  You guys are amazing. 
+        label Please create an exiting, personalized trip for our holidays vacations to
+        select(data-ng-model="user.placeName"  data-ng-options="place as place for place in places" required)
+        | .
+        label We are a group of around 
+        select(data-ng-model="user.numOfPeople" data-ng-options="persons as persons for persons in people" required)
+        | &nbsp;people.
+        label We are looking for a 
+        select(data-ng-model="user.tripDuration" data-ng-options="day as day for day in numOfDays" required)
+        | &nbsp;days trip in and around
+        select(data-ng-model="user.journeyStartingDate.month" data-ng-options="month as month for month in months" required)
+        select(data-ng-model="user.journeyStartingDate.year" data-ng-options="year as year for year in years" required)
+        |.
+        label Our Budget for the trip is 
+          i.fa.fa-inr
+        select(data-ng-model="user.expectedBudget" data-ng-options="budget as budget for budget in budgets" required)
+        | &nbsp;per person, including all personal expenditure.
+      p Thankyou.
+      p 
+        label Name:
+        input(type="text" data-ng-model="user.fullName" required)
+      p 
+        label Email:
+        input(type="email" data-ng-model="user.email" required)
+      p
+        label Mobile No:
+        input(type="number" data-ng-model="user.mobileNumber" required)
+
+      p 
+        button(type="submit" data-ng-disabled="instaBookForm.$invalid") Submit

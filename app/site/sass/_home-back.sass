@@ -1,0 +1,98 @@
+.main-content-wrapper
+  box-shadow: 0 1px 5px black
+  position: relative
+  z-index: 3
+
+
+/*home css goes here*/
+.home-content
+  display: flex
+  flex-direction: column
+
+  .value
+    flex: auto
+    min-height: 60vh
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 40px
+    font-family: "Garamond", Helvetica, Arial, sans-serif
+    color: rgb(242, 242, 242)
+    line-height: 1.2
+    text-align: center
+
+.home
+  overflow: hidden
+
+  .background-image
+    position: absolute
+    top : 0
+    width: 100%
+    height: 100%
+    z-index: 0
+
+    &.image1
+      left: 0
+      animation-name: home-back-animation-1
+      animation-iteration-count: 1
+      animation-duration: 5s
+
+
+    &.image2
+      left: 0
+      animation-name: home-back-animation-2
+      animation-iteration-count: infinite
+      animation-duration: 10s
+
+    img
+      display: block
+      width: 100%
+      height: 100%
+      margin: 0 auto
+
+.home-content .value
+    flex: auto
+    min-height: 60vh
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 40px
+    font-family: "Garamond", Helvetica, Arial, sans-serif
+    color: rgb(242, 242, 242)
+    line-height: 1.2
+    text-align: justify-all
+
+// We will give each step 5 seconds time to make the animation step,
+//    4 sec to visible and 1sec second to transition
+
+
+// home background animation from left 0 -> -100%
+// this animation will only take 5 seconds
+
+
+
+@keyframes  home-back-animation-1
+  0%
+    opacity: 1
+  80%
+    opacity: 1
+  100%
+    opacity:0
+
+
+// home background animation from left 100% -> 0 -> -100%
+// this animation will take 10 sec
+
+
+
+@keyframes  home-back-animation-2
+  0%
+    opacity:  0
+  40%
+    opacity: 0
+  50%
+    opacity: 1
+  90%
+    opacity: 1
+  100%
+    opacity: 0

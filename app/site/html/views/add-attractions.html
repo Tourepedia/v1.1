@@ -1,0 +1,64 @@
+
+<div class="add-attractions">
+  <div class="add-attractions-container">
+    <div class="row">
+      <div class="col-sm-3 col-xs-6 attractions selected-attractions">
+        <div class="head">
+          <p>Selected attractions</p><span data-ng-show="userAttractionsList.length == 0">Your attractions list is empty.</span>
+        </div>
+        <div class="attractions-container">
+          <div data-ng-repeat="attraction in user.attractionsList track by $index" class="attraction">
+            <div class="title">{{attraction.attraction_name}}</div>
+            <div class="remove-attraction"><span data-ng-click="removeAttractionFromList(attraction)"><i class="fa fa-remove"></i></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9 col-xs-6 row attractions">
+        <div class="head">
+          <p>Add attractions to your list</p>
+        </div>
+        <div class="attractions-container">
+          <div data-ng-show="showPre" data-ng-click="preAttractionsList()" class="arrow left"><i class="fa fa-angle-left"></i></div>
+          <div data-ng-show="showNext" data-ng-click="nextAttractionsList()" class="arrow right"><i class="fa fa-angle-right"></i></div>
+          <div data-ng-repeat="attraction in visibleAttractions track by $index" class="col-lg-3 col-sm-4">
+            <div class="attraction">
+              <div class="title">{{attraction.attraction_name}}</div>
+              <div class="image"><img data-ng-src="./site/img/attractions/{{attraction.attraction_image}}" alt="image" err-src="./site/img/attractions/default.jpg"/></div>
+              <div class="attraction-info">{{attraction.attraction_about}}</div>
+              <div title="Add Attraction" class="add-attraction"><span data-ng-click="addAttractionToList(attraction)">+</span></div>
+              <div onclick="LaunchDialog('place-info-dialog')" data-ng-click="setSelectedPlaceInfo(attraction)" class="read-more">read more...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="proceed-or-know"><a ui-sref="planATrip.proceed({'planningStage':'personal-information'})" data-ng-click="proceedToAddPersonalInformation(user.attractionsList)">Proceed</a></div>
+    <div data-ng-show="ourPlansForThisPlace.length != 0" class="other-options">
+      <p>OR</p>
+      <h2>Select from our existing plans</h2>
+      <div class="row existing-plans">
+        <div data-ng-repeat="plans in ourPlansForThisPlace" class="col-sm-4 col-xs-6">
+          <div ui-sref="planATrip.prePlansInfo({'prePlan':'our-plans'})" data-ng-click="showOurPlan(plans.our_trips_id)" class="existing-plan">
+            <div class="days">{{plans.our_trips_timeSpan}}</div>
+            <div class="plan-info"><img data-ng-src="./site/img/our-plans/{{plans.our_trips_img1}}" alt="image" err-src="./site/img/attractions/default.png"/></div>
+            <div class="budget">Starts at &nbsp; <i class="fa fa-inr"></i> {{plans.our_trips_cost}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="place-info-dialog" class="dialog-box lg">
+    <div class="dialog-box-container">
+      <div class="fake-box-body">
+        <div class="fake-close-button"></div>
+      </div>
+      <div class="dialog-box-body">
+        <div class="selected-place-info">
+          <h2>{{selectedAttractionInfo.attraction_name}}</h2>
+          <p>{{selectedAttractionInfo.attraction_about}}</p>
+        </div>
+        <div onClick="CloseDialog('place-info-dialog')" class="dialog-close-button dialog-close-button">X</div>
+      </div>
+    </div>
+  </div>
+</div>

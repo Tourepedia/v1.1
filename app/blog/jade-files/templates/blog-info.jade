@@ -1,0 +1,12 @@
+li.blogcard 
+	.img_part(data-ng-style="{'background-image':'url(./img/blogs/'+blog.recogId+'/'+blog.img+')'}")
+		p {{blog.title}}
+	.info
+		p {{blog.info}}
+		button.btn.cta.default(ui-sref="blog({'blogRecogId':blog.recogId})") Read More
+	.info_sub
+		ul
+			li Read Time: {{blog.readTime}}
+			li Date: {{blog.date}}
+			li By: {{blog.authorName}}
+			li fb Shares: {{blog.socialShares}}

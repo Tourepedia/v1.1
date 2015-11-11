@@ -1,0 +1,19 @@
+
+<div data-ng-controller="TripPlanningController" class="planning-procedure-container">
+  <div class="trip-plan-progress-bar">
+    <ul>
+      <li class="done">Select Destination</li>
+      <li data-ng-class="{'current':userAtAddAttraction, 'done': userAtAddInformation||userAtSubmitPlan}">Add Attractions</li>
+      <li data-ng-class="{'current':userAtAddInformation, 'done': userAtSubmitPlan}">Personal Information</li>
+      <li data-ng-class="{'current':userAtSubmitPlan}">Preview and Submit</li>
+    </ul>
+  </div>
+  <div class="selected-place-info">
+    <div class="top-info-bar">
+      <div class="place-info">
+        <h2>{{selectedPlaceInfo.place_name}}</h2>
+      </div>
+    </div>
+  </div>
+  <div ui-view="planning-steps-view" autoscroll="false"></div>
+</div>

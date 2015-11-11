@@ -1,0 +1,67 @@
+.dialog-box.lg#signUp-dialog(data-ng-controller="SignUpController")
+  .dialog-box-container
+    .fake-box-body
+      .fake-close-button
+    .dialog-box-body
+      // place your code here 
+      .panel.panel-primary
+        .panel-heading
+          span.h4 Register to Tourepedia
+        .panel-body
+          // .login-container
+          form.signUpForm(name="signUpForm")
+            .form-group
+              label(for="fullName") First Name*
+              input#fullName.form-control(type="text"  name="fullName" ng-model="newUser.fullName"
+                data-ng-focus="onFullName = true" data-ng-blur="onFullName = false"
+                ng-class="{'required-error': !onFullName && signUpForm.fullName.$dirty && signUpForm.fullName.$error.required}" 
+                required
+              )
+              .error-container(data-ng-show="!onFullName && signUpForm.fullName.$dirty && signUpForm.fullName.$invalid")
+                span.error Field is required.
+            .form-group
+              label(for="mobileNumber") Mobile No.*
+              input#mobileNumber.form-control(type="number"  name="mobileNumber" ng-model="newUser.mobileNumber"
+                data-ng-focus="onMobileNumber = true" data-ng-blur="onMobileNumber = false"
+                data-ng-minlength="10" data-ng-maxlength="10"
+                ng-class="{'required-error': !onMobileNumber && signUpForm.mobileNumber.$dirty && (signUpForm.mobileNumber.$error.required || signUpForm.mobileNumber.$invalid)}" 
+                required
+              )
+              .error-container(data-ng-show="!onMobileNumber && signUpForm.mobileNumber.$dirty && signUpForm.mobileNumber.$invalid")
+                span.error Enter a valid mobile number of 10 digits.
+            .form-group
+              label(for="email1") Email*
+              input#email1.form-control(type="email"  name="email1" ng-model="newUser.email"
+                data-ng-focus="onEmail = true" data-ng-blur="onEmail = false"
+                ng-class="{'required-error': !onEmail && signUpForm.email.$dirty && (signUpForm.email.$error.required || signUpForm.email.$invalid)}" 
+                required
+              )
+              .error-container(data-ng-show="!onEmail && signUpForm.email.$dirty && signUpForm.email.$invalid")
+                span.error Enter a valid email address.
+            .form-group
+              label(for="password1") Password*
+              input#password1.form-control(type="password"  name="password" ng-model="newUser.password"
+                data-ng-minlength="6"
+                ng-class="{'required-error': signUpForm.password.$dirty && signUpForm.password.$error.required }" 
+                required
+              )
+              .error-container(data-ng-show="signUpForm.password.$error.minlength")
+                span.error Password length must be at least 6 character.
+            .form-group
+              label(for="rePassword") Retype Password*
+              input#rePassword.form-control(type="password"  name="rePassword" ng-model="newUser.rePassword"
+                data-ng-minlength="6"
+                ng-class="{'required-error': signUpForm.rePassword.$dirty && signUpForm.rePassword.$error.required }" 
+                required
+              )
+              .error-container(data-ng-show="(signUpForm.password.$dirty && signUpForm.password.$valid &&  signUpForm.rePassword.$dirty && signUpForm.rePassword.$valid ) && (newUser.password != newUser.rePassword)")
+                span.error Password don't match.
+            .form-group
+              i.fa.fa-spin.fa-spinner.fa-lg(data-ng-show="signUpInProgress")
+              input#signUp-submit.form-control.btn.btn-success(type="button" value="Submit"
+                data-ng-disabled="signUpForm.$invalid" data-ng-class="{'ok': signUpForm.$valid && everyThingAlright(newUser)}"
+                data-ng-click="registerUser(newUser)"
+              )
+
+        //and before it 
+        .dialog-close-button(onclick="CloseDialog('signUp-dialog')") X

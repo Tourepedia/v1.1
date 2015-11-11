@@ -1,0 +1,12 @@
+
+<aside class="blogs">
+  <h1 class="related">Related Blogs...</h1>
+  <ul>
+    <li data-ng-repeat="blog in relatedBlogs"> <a ui-sref="blog({'blogRecogId': '{{blog.recogId}}' })" class="smbgcard">
+        <div class="img"><img ng-src="./img/blogs/{{blog.recogId}}/{{blog.thumbImg}}" alt="blog-photo"/></div>
+        <div class="title">
+          <h1>{{blog.title}}</h1>
+        </div></a>
+    </li>
+  </ul>
+</aside>

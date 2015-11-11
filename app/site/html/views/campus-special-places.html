@@ -1,0 +1,16 @@
+
+<div data-ng-hide="showInfo" class="places-container">
+  <div data-ng-show="fetchingPlaces" class="places-fetching-in-progress"><i class="fa fa-spin fa-spinner fa-lg"></i></div>
+  <div data-ng-repeat="place in filteredPlaces = (places  | PlaceTypeFilter:typeFilter | PlacePopularityFilter:popularityFilter| OfferFilter:[offerUpTo[0]]  | orderBy:'price':options.sortByPrice )" class="place">
+    <div class="card">
+      <div data-ng-style="{'background-image':'url(./site/img/campus-special/'+place.img+')'}" class="image"><span class="title">{{place.name}}</span></div>
+      <div class="content">
+        <p class="info-para">{{place.info}}</p>
+        <p class="price"><span data-ng-show="place.discountedPrice != ''" class="new-price"><i class="fa fa-inr"></i>{{place.discountedPrice}}/-</span><span data-ng-class="{'old-price': place.discountedPrice != ''}"><i class="fa fa-inr"></i>{{place.price}}/-</span></p>
+        <p class="type-popularity">({{place.type}} / {{place.popularity}})    </p>
+      </div>
+      <div class="action"><a data-ng-click="getPlace(place.id)" ui-sref=".place-info({'id':place.id})">Trip Info</a><a data-ng-click="getPlace(place.id)" ui-sref=".book({'id': place.id})">Book</a></div>
+    </div>
+    <div data-ng-show="!fetchingPlaces &amp;&amp; filteredPlaces.length === 0 " class="no-places">No Places</div>
+  </div>
+</div>

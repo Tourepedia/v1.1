@@ -1,0 +1,22 @@
+.places-container(data-ng-hide="showInfo")
+  .places-fetching-in-progress(data-ng-show="fetchingPlaces"): i.fa.fa-spin.fa-spinner.fa-lg
+  .place(
+    data-ng-repeat="place in filteredPlaces = (places  | PlaceTypeFilter:typeFilter | PlacePopularityFilter:popularityFilter| OfferFilter:[offerUpTo[0]]  | orderBy:'price':options.sortByPrice )"
+    )
+    .card
+      .image(data-ng-style="{'background-image':'url(./site/img/campus-special/'+place.img+')'}")
+        span.title {{place.name}}
+      .content
+        p.info-para {{place.info}}
+        p.price
+          span.new-price(data-ng-show="place.discountedPrice != ''")
+            i.fa.fa-inr
+            | {{place.discountedPrice}}/-
+          span(data-ng-class="{'old-price': place.discountedPrice != ''}")
+            i.fa.fa-inr
+            | {{place.price}}/-
+        p.type-popularity ({{place.type}} / {{place.popularity}})    
+      .action
+        a(data-ng-click="getPlace(place.id)" ui-sref=".place-info({'id':place.id})") Trip Info
+        a(data-ng-click="getPlace(place.id)" ui-sref=".book({'id': place.id})") Book
+    .no-places(data-ng-show="!fetchingPlaces && filteredPlaces.length === 0 ") No Places

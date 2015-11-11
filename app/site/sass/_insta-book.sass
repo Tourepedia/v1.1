@@ -1,0 +1,45 @@
+.insta-book-container
+  background: white
+  padding: 50px 0
+  .container
+    color: white
+    background: #008C8C
+    padding: 20px
+    line-height: 1.6
+    font-size: 24px
+    max-width: 800px
+    .problem
+      margin-bottom: 20px
+    .letter-body
+      margin: 20px 0
+      text-indent: 30px
+      text-align: justify
+      i
+        text-indent: 3px
+    form
+      margin: 20px auto
+      button
+        background: white
+        color: #008C8C
+        padding: 3px 20px
+        margin-top: 30px
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .3)
+        cursor: pointer
+        &:disabled
+          cursor: not-allowed
+  select, input
+    border: none
+    border-bottom: 1px solid white
+    background: transparent
+    outline: none
+    box-shadow: none
+    &.ng-touched.ng-invalid
+      border-color: red
+  select option
+    background: white
+    color: #008C8C
+    &:hover
+      color: white
+      background: black
+  input::placeholder
+    color: black

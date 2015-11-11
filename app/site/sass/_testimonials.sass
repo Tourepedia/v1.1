@@ -1,0 +1,71 @@
+/*testimonials css goes here*/
+.testimonials
+  padding: 50px 20px 10px
+  background: #cccccc
+
+  .title
+    text-align: center
+    font-weight: 600
+    font-size: 25px
+    margin: 0 0 30px 0
+    font-family: "Times New Roman", Helvetica, Arial, sans-serif
+    color: rgb(0, 0, 0)
+    line-height: 1.2
+    font-style: italic
+
+
+  .testimonials-container
+    margin: 0 auto
+    .pics
+      padding: 20px
+      .main-pic, .other-pics
+        max-width: 500px
+        margin: 0 auto
+
+
+      .main-pic img
+        height: 300px
+        width: 100%
+        vertical-align: none
+
+
+      .other-pics [class^="pic"] img
+        height: 150px
+        width: 100%
+
+
+    .reviews
+      padding: 20px
+      margin: 0 auto
+      .review
+        display: flex
+        border-bottom: 2px solid #21a1e1
+        padding: 10px
+
+        &:first-child
+          border-top: 2px solid #21a1e1
+      .user-review
+        font-size: 15px
+        font-weight: 600
+        font-style: italic
+        flex: 1
+        font-family: "Times New Roman", Helvetica, Arial, sans-serif
+        color: rgb(0, 0, 0)
+        line-height: 1.2
+
+
+      .user-photo
+        width: 100px
+        height: 100px
+        border-radius: 50%
+        background: white
+        text-align: center
+        line-height: 100px
+        flex-shrink: 0
+        overflow: hidden
+        border: 2px solid white
+
+        img
+          display: inline
+          width: 100px
+          height: 100px

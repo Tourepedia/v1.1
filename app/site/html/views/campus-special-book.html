@@ -1,0 +1,92 @@
+
+<div class="campus-special-book-container">
+  <header><span class="place-name">{{selectedPlace.name}}</span><span data-ng-show="selectedPlace.discountedPrice == ''" class="price"><i class="fa fa-inr">{{selectedPlace.price}}**/-</i></span><span data-ng-show="selectedPlace.discountedPrice != ''" class="price"><i class="fa fa-inr">{{selectedPlace.discountedPrice}}**/-</i></span><span>Trip Type: {{selectedPlace.type}}</span></header>
+  <div class="info-form">
+    <form name="campusSpecialForm" data-ng-submit="submitPlan()" novalidate="novalidate" class="row">
+      <div class="col-sm-6 book-form-full-name">
+        <div data-ng-init="fullNameFocus = false" data-ng-class="{'has-focus': fullNameFocus,'has-error' : campusSpecialForm.fullName.$touched &amp;&amp; campusSpecialForm.fullName.$error.required ,'has-value' : campusSpecialForm.fullName.$touched &amp;&amp; campusSpecialForm.fullName.$viewValue || user.fullName &amp;&amp; user.fullName != '' }" class="inputs-group">
+          <input id="fullName" type="text" name="fullName" required="required" data-ng-focus="fullNameFocus = true" data-ng-blur="fullNameFocus = false" data-ng-model="user.fullName"/>
+          <label for="fullName">Full Name*</label>
+        </div>
+      </div>
+      <div class="col-sm-6 book-form-email">
+        <div data-ng-init="emailFocus = false" data-ng-class="{'has-focus': emailFocus,'has-error' : campusSpecialForm.email.$touched &amp;&amp; campusSpecialForm.email.$error.required ,'has-value' : campusSpecialForm.email.$touched &amp;&amp; campusSpecialForm.email.$viewValue || user.email &amp;&amp; user.email != '' }" class="inputs-group">
+          <input id="email" type="email" name="email" required="required" data-ng-focus="emailFocus = true" data-ng-blur="emailFocus = false" data-ng-model="user.email"/>
+          <label for="email">Email*</label>
+        </div>
+      </div>
+      <div class="col-sm-6 book-form-mobile-number">
+        <div data-ng-init="mobileNumberFocus = false" data-ng-class="{'has-focus': mobileNumberFocus,'has-error' : campusSpecialForm.mobileNumber.$touched &amp;&amp; campusSpecialForm.mobileNumber.$error.required ,'has-value' : campusSpecialForm.mobileNumber.$touched &amp;&amp; campusSpecialForm.mobileNumber.$viewValue || user.mobileNumber &amp;&amp; user.mobileNumber != '' }" class="inputs-group">
+          <input id="mobileNumber" type="number" name="mobileNumber" required="required" data-ng-focus="mobileNumberFocus = true" data-ng-blur="mobileNumberFocus = false" data-ng-model="user.mobileNumber"/>
+          <label for="mobileNumber">Mobile Number*</label>
+        </div>
+      </div>
+      <div data-ng-init="user.journeyStartingDate = {'year': 2015, 'month': 'January', 'day': 1}" class="col-sm-6 row book-form-date">
+        <div class="col-xxs-4">
+          <div class="inputs-group">
+            <select id="year" name="year" data-ng-options="year as year for year in years" required="required" data-ng-model="user.journeyStartingDate.year"></select>
+          </div>
+        </div>
+        <div class="col-xxs-5">
+          <div class="inputs-group">
+            <select id="month" name="month" data-ng-options="month as month for month in months" required="required" data-ng-model="user.journeyStartingDate.month"></select>
+          </div>
+        </div>
+        <div class="col-xxs-3">
+          <div class="inputs-group">
+            <select id="day" name="day" data-ng-options="day as day for day in days" required="required" data-ng-model="user.journeyStartingDate.day"></select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 row">
+        <div class="col-sm-4 book-form-persons">
+          <div data-ng-init="numOfPersonsFocus = false" data-ng-class="{'has-focus': numOfPersonsFocus,'has-error' : campusSpecialForm.numOfPersons.$touched &amp;&amp; campusSpecialForm.numOfPersons.$error.required ,'has-value' : campusSpecialForm.numOfPersons.$touched &amp;&amp; campusSpecialForm.numOfPersons.$viewValue || user.numOfPersons &amp;&amp; user.numOfPersons != '' }" class="inputs-group">
+            <input id="numOfPersons" type="number" name="numOfPersons" required="required" data-ng-focus="numOfPersonsFocus = true" data-ng-blur="numOfPersonsFocus = false" data-ng-model="user.numOfPersons"/>
+            <label for="numOfPersons">Number Of Persons*</label>
+          </div>
+        </div>
+        <div data-ng-show="campusSpecialForm.numOfPersons.$viewValue" class="col-sm-8">
+          <div class="col-xxs-4">
+            <div data-ng-init="maleFocus = false" data-ng-class="{'has-focus': maleFocus,'has-value': campusSpecialForm.male.$touched &amp;&amp; campusSpecialForm.male.$viewValue || user.male &amp;&amp; user.male != ''}" class="inputs-group">
+              <input id="male" type="number" name="male" data-ng-focus="maleFocus = true" data-ng-blur="maleFocus = false" data-ng-model="user.male"/>
+              <label for="male">Male</label>
+            </div>
+          </div>
+          <div class="col-xxs-4">
+            <div data-ng-init="childrenFocus = false" data-ng-class="{'has-focus': childrenFocus,'has-value': campusSpecialForm.children.$touched &amp;&amp; campusSpecialForm.children.$viewValue || user.children &amp;&amp; user.children != ''}" class="inputs-group">
+              <input id="children" type="number" name="children" data-ng-focus="childrenFocus = true" data-ng-blur="childrenFocus = false" data-ng-model="user.children"/>
+              <label for="children">Children</label>
+            </div>
+          </div>
+          <div class="col-xxs-4">
+            <div data-ng-init="femaleFocus = false" data-ng-class="{'has-focus': femaleFocus,'has-value': campusSpecialForm.female.$touched &amp;&amp; campusSpecialForm.female.$viewValue || user.female &amp;&amp; user.female != ''}" class="inputs-group">
+              <input id="female" type="number" name="female" data-ng-focus="femaleFocus = true" data-ng-blur="femaleFocus = false" data-ng-model="user.female"/>
+              <label for="female">Female</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 book-form-address">
+        <div data-ng-init="addressFocus = false" data-ng-class="{'has-focus': addressFocus,'has-error' : campusSpecialForm.address.$touched &amp;&amp; campusSpecialForm.address.$error.required ,'has-value' : campusSpecialForm.address.$touched &amp;&amp; campusSpecialForm.address.$viewValue || user.address &amp;&amp; user.address != '' }" class="inputs-group">
+          <input id="address" type="text" name="address" required="required" data-ng-focus="addressFocus = true" data-ng-blur="addressFocus = false" data-ng-model="user.address"/>
+          <label for="address">Address*</label>
+        </div>
+      </div>
+      <div class="col-sm-12 book-form-queries">
+        <div data-ng-init="queriesFocus = false" data-ng-class="{'has-focus': queriesFocus,'has-value' : campusSpecialForm.queries.$touched &amp;&amp; campusSpecialForm.queries.$viewValue || user.queries &amp;&amp; user.queries != '' }" class="inputs-group">
+          <textarea id="queries" name="queries" row="5" data-ng-focus="queriesFocus = true" data-ng-blur="queriesFocus = false" data-ng-model="user.queries"></textarea>
+          <label for="queries">Any Queries  </label>
+        </div>
+      </div>
+      <div class="col-sm-12 book-form-info">
+        <p>
+          <input id="agreement" type="checkbox" name="agreement" required="required" data-ng-model="user.agreement"/>
+          <label for="agreement">By submitting this form, you are agree with our <a target="_blank" ui-sref="termConditions">Terms & Conditions</a> and <a target="_blank" ui-sref="privacyPolicies">Privacy Policies</a>.    </label><br/><br/><span>** Price may change depending upon number of people in the group.</span>
+        </p>
+      </div>
+      <div class="col-sm-12 book-form-submit">
+        <button type="submit" data-ng-disabled="campusSpecialForm.$invalid">Submit<i data-ng-show="submittingPlan" class="fa fa-spin fa-spinner fa-lg"> </i></button>
+      </div>
+    </form>
+  </div>
+</div>

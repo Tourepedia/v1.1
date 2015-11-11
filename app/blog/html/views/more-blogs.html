@@ -1,0 +1,10 @@
+
+<section data-ng-controller="HomeBlogsController" class="section-more-blogs">
+  <hr/>
+  <ul>
+    <blog-info data-ng-repeat="blog in moreBlogs" blog="blog"></blog-info>
+  </ul>
+  <div class="action">
+    <button data-ng-click="loadMore()" data-ng-disable="loadingMore" data-ng-show="moreAvailable" class="btn cta">Load More...</button>
+  </div>
+</section>

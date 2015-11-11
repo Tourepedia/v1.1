@@ -1,0 +1,64 @@
+/*#########################################################*/
+/*dialog box css goes here*/
+.dialog-box
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 1040
+  overflow: hidden
+  background: rgba(0, 0, 0, .5)
+  display: none
+
+  .dialog-box-container
+    margin: 10% auto
+
+
+  &.sm
+    .dialog-box-container, .dialog-box-body, .fake-box-body
+      width: 300px
+      min-height: 10px
+
+
+  &.lg
+    .dialog-box-container, .dialog-box-body,  .fake-box-body
+      width: 440px
+      min-height: 10px
+  &.xl
+    .dialog-box-container, .dialog-box-body,  .fake-box-body
+      width: 580px
+      min-height: 10px
+
+
+  .dialog-box-body, .fake-box-body
+    position: absolute
+    margin: 0
+
+
+  .dialog-box-body
+    z-index: 2
+    background: white
+    border-radius: 2px
+    height: auto
+
+
+  .fake-box-body
+    z-index: 1
+
+
+  .fake-box-body .fake-close-button, .dialog-box-container .dialog-close-button
+    width: 30px
+    height: 30px
+    line-height: 30px
+    text-align: center
+    position: absolute
+    right: -15px
+    top: -15px
+    border-radius: 50%
+    background: white
+    cursor: pointer
+
+
+  .fake-box-body .fake-close-button, .dialog-box-body
+    box-shadow: 0 0 5px 1px black

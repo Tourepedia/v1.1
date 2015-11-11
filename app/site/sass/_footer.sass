@@ -1,0 +1,66 @@
+/*footer css goes here*/
+body
+  padding-bottom: 200px
+
+.site-footer
+  position: fixed
+  bottom: 0
+  height: 202px
+  width: 100%
+  z-index: 0
+  background: rgb(52, 73, 94)
+
+
+  .footer-container
+    color: whitesmoke
+    display: flex
+    justify-content: space-around
+
+    h2
+      text-transform: uppercase
+      font-weight: normal
+      margin: 20px 0 10px
+      font-size: 16px
+      font-family: "Garamond", Helvetica, Arial, sans-serif
+      color: rgb(221, 221, 221)
+      line-height: 1.2
+    ul
+      list-style-type: none
+
+      li
+        font-size: 16px
+        margin: 10px 0
+        font-family: "Garamond", Helvetica, Arial, sans-serif
+        color: rgb(221, 221, 221)
+        line-height: 1.2
+        a
+          color: whitesmoke
+          display: inline-block
+          font-size: inherit
+
+    div:not(:last-child) ul li::before
+      content: "- "
+@media (max-width: 530px)
+  body
+    padding-bottom: 0px
+  footer
+    position: relative
+    height: auto
+    padding-top:5px
+    h2
+      text-align: center
+      margin: 0
+    .footer-container
+      display: block
+
+    .footer-container>div
+      padding: 10px 0px
+      &:not(:last-child)
+        border-bottom: 3px solid #898989
+
+      &:not(:first-child)
+        margin-top: -2px
+        border-top: 1px solid rgb(75, 75, 75) 
+    ul li
+      display:  inline-block
+      margin: 2px 5px

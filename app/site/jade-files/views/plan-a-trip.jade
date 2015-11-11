@@ -1,0 +1,12 @@
+.planning-procedure-container(data-ng-controller="TripPlanningController")
+  .trip-plan-progress-bar
+    ul
+      li.done Select Destination
+      li(data-ng-class="{'current':userAtAddAttraction, 'done': userAtAddInformation||userAtSubmitPlan}") Add Attractions
+      li(data-ng-class="{'current':userAtAddInformation, 'done': userAtSubmitPlan}") Personal Information
+      li(data-ng-class="{'current':userAtSubmitPlan}") Preview and Submit
+  .selected-place-info
+    .top-info-bar
+      .place-info
+        h2 {{selectedPlaceInfo.place_name}}
+  div(ui-view="planning-steps-view" autoscroll="false")

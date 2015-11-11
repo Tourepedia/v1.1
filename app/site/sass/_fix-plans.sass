@@ -1,0 +1,107 @@
+
+/*fix-plan css goes here*/
+.fix-plans
+  width: 100%
+  background: #ffffcc
+  padding: 0 0 50px 0
+  .types-of-pre-plans
+    display: flex
+    justify-content: center
+    .pre-plan
+      flex: 1
+      height: 250px
+      overflow: hidden
+      &.family-plan
+        background: url("./../images/home/family_travel.jpg") no-repeat scroll center center
+        background-size: cover
+      &.group-plan
+        background: url("./../images/home/group_travel.jpg") no-repeat scroll center center
+        background-size: cover
+      &.honeymoon-package
+        background: url("./../images/home/honeymoon_package.jpg") no-repeat scroll center center
+        background-size: cover
+
+      .title
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        background: rgba(0, 0, 0, .7)
+        transition: all .15s ease-in-out .05s
+        span
+          width: 100%
+          text-transform: uppercase
+          text-align: center
+          font-weight: 600
+          color: #ffffff
+          font-size: 25px
+          letter-spacing: 10px
+          font-family: "DINRoundWeb", Verdana, Arial, Tahoma, sans-serif
+          display: inline-block
+  .summery-of-plans
+    padding: 20px 10px
+    margin: 0 auto
+    max-width: 1100px
+    h1
+      text-align:center
+      color: dimgray 
+      padding: 40px 5px 30px
+    .plan
+      margin: 10px
+      box-sizing: border-box
+      box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .2), 0 1px 6px 0 rgba(0, 0, 0, .2)
+      border-radius: 2px
+      .heading
+        background: rgb(231, 76, 60)
+        text-align: center
+        padding: 10px
+        border-radius: 2px 2px 0 0
+        span
+          font-size: 24px
+          font-family: "DINRoundWeb", Verdana, Arial, Tahoma, sans-serif
+          line-height: 1.6
+          text-align: justify-all
+          text-transform: uppercase
+          color: white
+          letter-spacing: .05em
+      .content
+        background: white
+        padding: 20px 10px
+        border-radius: 0 0 2px 2px
+
+        ul
+          list-style: none
+          min-height: 350px
+          display: flex
+          flex-direction: column
+          justify-content: space-around
+          li
+            margin: 10px 0
+            display: flex
+            i
+              display: block
+              width: 70px
+              flex-shrink: 0
+            span
+              display: block
+              font-size: 18px
+              font-family: "DINRoundWeb", Verdana, Arial, Tahoma, sans-serif
+              color: rgb(0, 0, 0)
+              line-height: 1.2
+              flex-grow: 1
+  .bottom-line
+    text-align: center
+    font-family: "Segoe Print", serif
+    padding: 10px
+    font-size: 22px
+    color: rgb(0, 0, 0)
+    line-height: 1.2
+
+@media all and (max-width: 1000px)
+  .fix-plans .types-of-pre-plans .pre-plan .title span
+    font-size: 18px
+    letter-spacing: 5px
+
+@media all and (max-width: 500px)
+  .fix-plans .types-of-pre-plans
+    flex-direction: column

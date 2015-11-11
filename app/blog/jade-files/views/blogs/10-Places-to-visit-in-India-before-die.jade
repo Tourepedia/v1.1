@@ -1,0 +1,20 @@
+.bloghead
+	.blogtitle
+		h1 {{blog.title}}
+	.bloginfo
+		ul
+			li: i.fa &#xf073; {{blog.publishedDate}}
+			li: i.fa &#xf274; {{blog.readTime}} min
+			li: a(ui-sref="authors({'id': blog.authorId})"): i.fa &#xf007; {{blog.authorName}}
+.blogcontent
+	h2 First Subheading Title
+	h3 Sub-Heading of the blog
+	p This is the content of the blog 
+		a(href="#") kahdv 
+		| in which the information of the blog is given and the author will share all his or her details about the topic of teh blog. This is the content of the blog in which the information of the blog is given and the author will share all his or her details about the topic of teh blog. This is the content of the blog in which the information of the blog is given and the author will share all his or her details about the topic of teh blog.
+	img(ng-src="./img/blogs/{{blog.recogId}}/IMG_0624.jpg", alt="Blog_Photo")
+	h3 Sub-Heading of the blog
+	p This is the content of the blog 
+		a(href="#") kahdv 
+		| in which the information of the blog is given and the author will share all his or her details about the topic of teh blog. This is the content of the blog in which the information of the blog is given and the author will share all his or her details about the topic of teh blog. This is the content of the blog in which the information of the blog is given and the author will share all his or her details about the topic of teh blog.
+	img(ng-src="./img/blogs/{{blog.recogId}}/pexels-photo-12060-medium.jpeg", alt="Blog_Photo")

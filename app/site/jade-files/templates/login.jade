@@ -1,0 +1,30 @@
+.dialog-box.sm#login-dialog(data-ng-controller="LoginController")
+  .dialog-box-container
+    .fake-box-body
+      .fake-close-button
+    .dialog-box-body
+      // place your code here 
+      .panel.panel-primary
+        .panel-heading
+          span.h4 Sign in to Tourepedia
+        .panel-body
+          // .login-container
+          form(name="loginForm")
+            .form-group
+              input#email.form-control.no-border(type="email" placeholder="Email" name="email" ng-model="user.email"
+            ng-class="{'required-error': loginForm.email.$dirty && loginForm.email.$error.required}" required)
+            .form-group
+              input#password.form-control.no-border(type="password" placeholder="Password" name="password" ng-model="user.password"
+            ng-class="{'required-error': loginForm.password.$dirty && loginForm.password.$error.required}" required)
+
+            .form-group
+              button(ng-disabled="loginForm.$invalid" class="btn btn-success btn-block" id="login-submit" value="Login"
+            ng-class="{'ok': loginForm.$valid}" data-ng-click="login(user)") Log in
+
+            .line.line-dashed
+            .form-group
+              p.text-center <small>Do not have an account?</small>
+            .form-group
+              button.btn.btn-primary.btn-block(onclick="CloseDialog('login-dialog'); LaunchDialog('signUp-dialog')") Create an account
+        //and before it 
+        .dialog-close-button(onclick="CloseDialog('login-dialog')") X

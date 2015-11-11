@@ -1,0 +1,125 @@
+
+<div class="personal-information">
+  <div class="personal-information-container">
+    <div class="plan-book-menu">
+      <li class="active">Review the information carefully ans submit</li>
+    </div>
+    <div class="information-form final-review">
+      <div class="row">
+        <div class="info col-sm-6">
+          <div class="row">
+            <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Order Type:</span></div>
+            <div class="value col-sm-4 col-xs-7 col-xxs-6">
+              <p>{{user.planType}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="info col-sm-6">
+          <div class="row">
+            <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Place Name:</span></div>
+            <div class="value col-sm-4 col-xs-7 col-xxs-6">
+              <p>{{user.selectedPlace}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="general-information">
+        <div class="row">
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Full Name:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>{{user.plan.fullName}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Email:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>{{user.plan.email}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Mobile:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>{{user.plan.mobileNumber}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Number of People:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>{{user.plan.numOfPeople}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Trip Duration:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>{{user.plan.numOfDays}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Net Amount:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>&lt;i class=&quot;fa fa-inr&quot;&gt;&lt;/i&gt; {{user.plan.priceToPay}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Journey Starting Date:</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>{{user.journeyStartingDate}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="info col-sm-6">
+            <div class="row">
+              <div class="key col-sm-4 col-xs-5 col-xxs-6"><span>Address::</span></div>
+              <div class="value col-sm-4 col-xs-7 col-xxs-6">
+                <p>&lt;p data-ng-repeat=&quot;lines in user.plan.address&quot;&gt;{{lines}}&lt;/p&gt;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="attractions-information">
+        <div data-ng-show="user.ourPlanId == -1" class="row info">
+          <div class="key col-sm-2 col-xs-5"><span>Attractions :</span></div>
+          <div class="value col-sm-10 col-xs-7">
+            <p ng-show=" user.attractionsList.length == 0">No attraction added</p>
+            <p data-ng-repeat="attraction in user.attractionsList">
+              <b> Name </b>:  {{attraction.attraction_name}} <br/>
+              <b>Info</b> :  {{attraction.attraction_about}}
+              <br/> <br/>
+            </p>
+          </div>
+        </div>
+        <div data-ng-show="user.ourPlanId != -1" class="info row">Our Plan for <b>{{selectedPlaceInfo.place_name}}</b> is selected.</div>
+      </div>
+      <hr/>
+      <div class="proceed-group row">
+        <div class="col-xm-6 col-xxs-4"><span ui-sref="planATrip.proceed({'planningStage':'personal-information'})" data-ng-click="proceedToAddPersonalInformation()" class="valid-form"><i class="fa fa-arrow-left"></i>Go back</span></div>
+        <div class="col-xs-6 col-xxs-8"><span data-ng-show="!isLoggedIn" onclick="LaunchDialog('login-dialog')">Login and Submit</span><i ng-show="isProgressGoing" class="fa fa-spin fa-spinner"> </i><a ng-show="isLoggedIn &amp;&amp; user.plan.priceToPay=='300'" href="https://www.instamojo.com/tourepedia1/plan-only/" rel="im-checkout" data-behavior="remote" data-style="dark" data-text="Pay Rs. {{user.plan.priceToPay}}" data-token="0de8a8dfd7f8b644de197b54dabc99f1"><span ng-show="isLoggedIn" data-ng-click="submitThePlan()"> Pay Rs. {{user.plan.priceToPay}}</span></a><a ng-show="isLoggedIn &amp;&amp; user.plan.priceToPay=='500'" href="https://www.instamojo.com/tourepedia1/plan-only-8e41a/" rel="im-checkout" data-behavior="remote" data-style="dark" data-text="Pay Rs. {{user.plan.priceToPay}}" data-token="0de8a8dfd7f8b644de197b54dabc99f1"><span ng-show="isLoggedIn" data-ng-click="submitThePlan()"> Pay Rs. {{user.plan.priceToPay}} </span></a><a ng-show="isLoggedIn &amp;&amp; user.plan.priceToPay=='1000'" href="https://www.instamojo.com/tourepedia1/plan-only-2dc99/" rel="im-checkout" data-behavior="remote" data-style="dark" data-text="Pay Rs. {{user.plan.priceToPay}}" data-token="0de8a8dfd7f8b644de197b54dabc99f1"> <span ng-show="isLoggedIn" data-ng-click="submitThePlan()"> Pay Rs. {{user.plan.priceToPay}}</span></a>
+          <script src="https://d2xwmjc4uy2hr5.cloudfront.net/im-embed/im-embed.min.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

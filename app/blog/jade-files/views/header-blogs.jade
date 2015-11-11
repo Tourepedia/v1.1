@@ -1,0 +1,18 @@
+mixin trending-item(recogId, imgSrc, title)
+  a.smbgcard(ui-sref="blog({'blogRecogId': '#{recogId}' })")
+    .img
+      img(ng-src="./img/blogs/#{recogId}/#{imgSrc}", alt="blog-photo")
+    .title
+      h1= title      
+
+section.section-header-blogs.row(data-ng-controller="HomeBlogsController")
+  div.main-blogs.col-sm-7 
+    slider(items="mainBlogs")
+  aside.col-sm-5
+    .trending
+      .top
+        p Trending
+      .blogs
+        ul
+          li(data-ng-repeat="blog in trending") 
+            +trending-item('{{blog.recogId}}', '{{blog.thumbImg}}', '{{blog.title}}')  

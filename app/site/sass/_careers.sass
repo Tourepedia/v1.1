@@ -1,0 +1,137 @@
+.careers-container
+  background: rgb(233, 234, 237)
+  padding: 50px 0
+  .title
+    text-align: center
+    font-size: 28px
+    padding: 5px
+    span
+      padding: 5px 20px
+      display: inline-block
+      color: #696969
+      background: white
+      border-radius: 25px
+
+  .careers-need
+    padding: 20px
+    background: white
+    border-radius: 2px
+    line-height: 1.6
+    font-size: 18px
+    color: #514F4F
+    margin: 10px
+    p
+      text-indent: 100px
+      font-family:  Futura,Trebuchet MS,Arial,sans-serif
+      font-size: 16px
+      line-height: 1.6
+
+  .careers-options
+    padding: 20px 0
+
+    .careers-option
+      background: white
+      margin: 10px
+      border-radius: 2px
+      padding: 10px 15px
+      box-shadow: 0 1px 3px rgba(0,0,0,.2)
+      header
+        padding: 15px 0
+        .job-title
+          font-size: 20px
+          font-weight: 600
+          color: #464444
+        .job-duration
+          text-align: right
+          color: #514F4F
+      .show-on-need
+        border-top: 1px solid silver
+      section
+        padding: 10px 0
+        color: #514F4F
+        h3
+          font-size: 16px
+          color: #5d5b5b
+        p
+          padding: 5px 0
+        ul
+          list-style: none
+          padding: 5px 0
+          li
+            margin-bottom: 2px
+
+      .job-apply button
+        padding: 8px 30px
+        background: rgb(39, 174, 96)
+        color: white
+        font-size: 14px
+        font-weight: 600
+        border-radius: 2px
+        transition: background-color .2s ease,box-shadow .28s cubic-bezier(.4,0,.2,1)
+        outline: none
+        font-family:  Arial, sans-serif
+        &:hover
+          box-shadow:0 2px 4px rgba(0,0,0,.175)
+          background: rgba(39, 174, 96, .9)
+        &:active
+          box-shadow:0 5px 10px rgba(0,0,0,.2)
+          background: rgba(39, 174, 96, .8)
+  .job-apply-container
+    .header
+      color: white
+      font-weight: 600
+      padding: 20px
+      background: #00a096
+      border-radius: 2px 0 0 0
+      &.header
+        label
+          font-weight: 600
+    form
+      padding: 20px
+      background: #f5f5f5
+      border-radius: 0 0 2px 2px
+      .row
+        margin-bottom: 10px
+        height: 28px
+        line-height: 28px
+      label
+        font-weight: 500
+        color: #005F59
+      input
+        height: 22px
+        border: 1px solid silver
+        border-radius: 2px
+        padding: 2px 5px
+        font-size: 15px
+        width: 95%
+        color: #005F59
+        &.error
+          outline: none
+          border-color: #ca5a59
+      textarea
+        resize: none
+        border: 1px solid silver
+        border-radius: 2px
+        padding: 2px 5px
+        font-size: 15px
+        width: 95%
+        &.error
+          outline: none
+          border-color: #ca5a59
+      .submit
+        clear: both
+        padding-top: 20px
+        button
+          padding: 8px 30px
+          background: #00a096
+          color: white
+          border-radius: 2px
+
+          
+.careers-container .dialog-box
+  .fake-box-body .fake-close-button,
+  .dialog-box-container .dialog-close-button
+    background: #00a096
+    color: white
+    font-size: 30px
+    font-weight: 600

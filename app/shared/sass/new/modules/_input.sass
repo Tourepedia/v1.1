@@ -1,0 +1,46 @@
+
+.form-input-group
+  position: relative
+
+.form-input
+  border: 0 solid #e3e3e3
+  border-bottom-width: 1px
+  display: block
+  outline: 0
+  padding: 1px 0 8px
+  transition: border-color .2s
+  width: 100%
+
+.form-input:focus
+  border-bottom-color: #2e8ece
+
+.form-input-group > .form-required
+  display: block
+  bottom: 3px
+  position: absolute
+  right: 0
+
+.input-addons-group
+  position: relative
+  display: table
+  border-collapse: collapse
+  box-sizing: border-box
+  width: 100%
+  margin: 2px auto
+  .addon
+    line-height: 1
+    background: transparentize($modal-theme-color, .5)
+    text-align: center
+    width: 40px
+    height: 40px
+    white-space: nowrap
+    vertical-align: middle
+    display: table-cell
+    border-radius: 50%
+  .form-input
+    width: 100%
+    padding-left: 10px
+    display: table-cell
+  &.focused, &.has-value
+        .addon
+            background: $modal-theme-color

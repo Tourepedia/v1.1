@@ -1,0 +1,15 @@
+.aboutauthor
+  h1.head About Author
+  .content
+    .info
+      .autimage
+        a(ui-sref="authors({'id':author.id})"): img(ng-src="./img/authors/{{author.img}}", alt="authors image")
+      .autinfo
+        h1 {{author.name}}
+        h3: a(href="mailto:{{author.email}}") {{author.email}}
+      .autcontact
+        a#fb(href="#"): i.fa.fa-facebook
+        a#tw(href="#"): i.fa.fa-twitter
+        a#go(href="#"): i.fa.fa-google-plus
+    .content
+      p {{author.bio}}

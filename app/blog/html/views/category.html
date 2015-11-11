@@ -1,0 +1,23 @@
+
+<section data-ng-controller="CategoryController">
+  <div data-ng-repeat="blog in blogs" ui-sref="blog({'blogRecogId': blog.recogId})" class="blogcard">
+    <div class="img_part">
+      <p>{{blog.title}}</p>
+    </div>
+    <div class="info">
+      <p>{{blog.info}}</p>
+      <button>Read More</button>
+    </div>
+    <div class="info_sub">
+      <ul>
+        <li>Read Time: {{blog.readTime}}</li>
+        <li>Date: {{blog.date}}</li>
+        <li>By: {{blog.authorName}}</li>
+        <li>fb Shares: {{blog.socialShares}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="thebutton">
+    <button type="button" data-ng-disabled="loadingMore" data-ng-click="loadMore()" data-ng-show="moreAvailable" class="btn">Load More...</button>
+  </div>
+</section>

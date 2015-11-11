@@ -1,0 +1,34 @@
+
+<div class="place-info-cont container">
+  <div class="go-back"><a ui-sref="campusSpecial"><i class="fa fa-angle-left">go back</i></a></div>
+  <div class="card">
+    <div ng-style="{'background-image':'url(./site/img/campus-special/'+selectedPlace.img+')'}" class="image">
+      <p class="title">{{selectedPlace.name}}, <span class="sub-title">{{selectedPlace.state}}</span></p><a ui-sref="campusSpecial.book({'id': selectedPlace.id})" class="cta book-plan-cta bottom">Book</a><span class="price-info"><span data-ng-show="selectedPlace.discountedPrice != ''"><i class="fa fa-inr"> </i>{{selectedPlace.discountedPrice}}/-</span><span data-ng-class="{'old-price': selectedPlace.discountedPrice != ''}"><i class="fa fa-inr"></i>{{selectedPlace.price}}/-</span></span>
+    </div>
+    <div class="content">
+      <section class="includes">
+        <h2>Trip Includes</h2>
+        <ul>
+          <li data-ng-repeat="include in selectedPlace.includes">{{include}}</li>
+          <li data-ng-show="selectedPlace.sightSeeing.length &gt; 0">Sightseeing:- 
+            <ul>
+              <li data-ng-repeat="sightSeeing in selectedPlace.sightSeeing">{{sightSeeing}}</li>
+            </ul>
+          </li>
+          <li data-ng-show="selectedPlace.adventures.length &gt; 0">
+            <ul>
+              <li data-ng-repeat="adventure in selectedPlace.adventures">{{adventure}}</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section class="itinerary">
+        <h2>Itinerary</h2>
+        <ul>
+          <li data-ng-repeat="itinerary in selectedPlace.itinerary"><span>Day {{$index}} -</span>{{itinerary}}</li>
+        </ul>
+      </section>
+    </div>
+    <div class="action"><a ui-sref="campusSpecial.book({'id': selectedPlace.id})" class="cta book-plan-cta">Book</a></div>
+  </div>
+</div>

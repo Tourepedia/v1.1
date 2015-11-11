@@ -1,0 +1,35 @@
+.place-info.select-destination(data-ng-controller="PlaceInfoController")
+  .background-image
+    img(data-ng-src="./site/img/home/{{images[selectedPlaceInfo.place_region_name]}}" alt="Back Image")
+  .place-info-container
+    .center-info-content
+      .top-stand
+      .info.row
+        .content.col-sm-9.col-xs-8
+          p
+            span.place-name {{selectedPlaceInfo.place_name}} <br />
+            | {{selectedPlaceInfo.place_about}}  <br />
+            | {{selectedPlaceInfo.place_feeling}}
+          p
+            b Best Time to visit :
+            | {{selectedPlaceInfo.place_bestTime}} <br />
+            b Nearby place to visit :
+            | {{selectedPlaceInfo.place_near_by_places}} <br />
+            b Location :
+            | {{selectedPlaceInfo.place_sea_level}} above the sea level. <br />
+            b Budget :
+            | Starts At Rs. {{selectedPlaceInfo.place_ideal_budget}}/-
+            b No. of Days :
+            | {{selectedPlaceInfo.place_idealNo_days}} days
+        .col-sm-3.col-xs-4
+          .image
+            img( data-ng-src="./site/img/places-info/{{selectedPlaceInfo.place_img1}}" alt="place image")
+            | <br>
+            img( data-ng-src="./site/img/places-info/{{selectedPlaceInfo.place_img2}}" alt="place image")
+        .proceed-button.col-xs-12(data-ng-click="processToAddAttraction()")
+          a(ui-sref="planATrip") Proceed to Plan
+      .bottom-stand
+style.
+  .place-info .center-info-content {
+      padding-bottom: 0;
+  }

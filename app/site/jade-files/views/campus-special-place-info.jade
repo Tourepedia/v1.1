@@ -1,0 +1,38 @@
+.place-info-cont.container
+  .go-back
+    a(ui-sref="campusSpecial"): i.fa.fa-angle-left go back
+  .card
+    .image(ng-style="{'background-image':'url(./site/img/campus-special/'+selectedPlace.img+')'}")
+      p.title {{selectedPlace.name}}, 
+        span.sub-title {{selectedPlace.state}}
+      a.cta.book-plan-cta.bottom(ui-sref="campusSpecial.book({'id': selectedPlace.id})") Book
+      span.price-info
+        span(data-ng-show="selectedPlace.discountedPrice != ''")
+          i.fa.fa-inr 
+          | {{selectedPlace.discountedPrice}}/-
+        span(data-ng-class="{'old-price': selectedPlace.discountedPrice != ''}")
+          i.fa.fa-inr
+          | {{selectedPlace.price}}/-
+    .content
+      //- section.about-place
+      //-   h2  About the Place
+      //-   p {{selectedPlace.about}}
+      section.includes
+        h2 Trip Includes
+        ul
+          li(data-ng-repeat="include in selectedPlace.includes" ) {{include}}
+          li(data-ng-show="selectedPlace.sightSeeing.length > 0") Sightseeing:- 
+            ul
+              li(data-ng-repeat="sightSeeing in selectedPlace.sightSeeing") {{sightSeeing}}
+          li(data-ng-show="selectedPlace.adventures.length > 0")
+              ul
+                li(data-ng-repeat="adventure in selectedPlace.adventures") {{adventure}}
+      section.itinerary
+        h2 Itinerary
+        ul
+          li(data-ng-repeat="itinerary in selectedPlace.itinerary")
+            span Day {{$index}} -
+            | {{itinerary}}
+    .action
+      a.cta.book-plan-cta(ui-sref="campusSpecial.book({'id': selectedPlace.id})") Book
+        

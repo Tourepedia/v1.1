@@ -1,0 +1,20 @@
+.slider
+	.slide(ng-repeat="item in items" ng-show="item && item.visible")
+		.img(ng-style="{'background-image':'url(./img/blogs/'+item.recogId+'/'+item.img+')'}")
+		.content
+			h2 {{item.title}}
+			p {{item.shortInfo}} 
+		.action
+			ul
+				li 
+					span: i.fa.fa-clock-o 
+					| &nbsp; {{item.readTime}} minutes
+				li
+					span: i.fa.fa-calendar
+					| &nbsp; {{item.publishedDate}}
+				li 	
+					a.btn(ui-sref="blog({'blogRecogId':item.recogId})") Read...
+  
+	.arrows.left(href="" ng-click="prev()"): i.fa.fa-angle-left
+	.arrows.right(href="#" ng-click="next()"): i.fa.fa-angle-right
+      

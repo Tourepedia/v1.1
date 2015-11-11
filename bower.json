@@ -1,0 +1,22 @@
+{
+  "name": "assets",
+  "version": "0.0.0",
+  "authors": [
+    "Sudhir <luckysud4@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-ui-router": "~0.2.15",
+    "normalize.css": "~3.0.3",
+    "fontawesome": "~4.4.0",
+    "nprogress": "~0.2.0"
+  }
+}

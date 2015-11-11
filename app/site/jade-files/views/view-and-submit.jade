@@ -1,0 +1,86 @@
+mixin keyValue(key, value)
+  .row
+    .key.col-sm-4.col-xs-5.col-xxs-6
+      span #{key}:
+    .value.col-sm-4.col-xs-7.col-xxs-6
+      p #{value}
+      
+.personal-information
+  .personal-information-container
+    .plan-book-menu
+      li.active Review the information carefully ans submit
+    .information-form.final-review
+      .row
+        .info.col-sm-6
+          +keyValue('Order Type', '{{user.planType}}')
+        .info.col-sm-6
+          +keyValue('Place Name', '{{user.selectedPlace}}')
+      hr
+      .general-information
+        .row
+          .info.col-sm-6
+            +keyValue('Full Name', '{{user.book.fullName}}')  
+          .info.col-sm-6
+            +keyValue('Email', '{{user.book.email}}')  
+        .row
+          .info.col-sm-6
+            +keyValue('Mobile', '{{user.book.mobileNumber}}')  
+          .info.col-sm-6
+            +keyValue('Alt. Mobile', '{{user.book.altMobileNumber}}')
+        .row
+          .info.col-sm-6
+            +keyValue('Number of People', '{{user.book.numOfPeople}}')  
+          .info.col-sm-6
+            +keyValue('Expected Budget', '{{user.book.expectedBudget}}')  
+        .row
+          .info.col-sm-6
+            +keyValue('Type Of Trip', '{{user.book.typeOfTrip}}')  
+          .info.col-sm-6
+            +keyValue('Trip Duration', '{{user.book.tripDuration}}')
+          .info.col-sm-6
+            +keyValue('Journey Starting Date', '{{user.journeyStartingDate}}')
+      hr
+      .travel-information
+        .row
+          .info.col-sm-6
+            +keyValue('Origin City', '{{user.book.originCity}}')  
+          .info.col-sm-6
+            +keyValue('Returning City', '{{user.book.returningCity}}')  
+        .row
+          .info.col-sm-12
+            +keyValue('Travel Preference', '{{user.book.travel}}')  
+      hr
+      .attractions-information
+        .row.info(data-ng-show="user.ourPlanId == -1")
+          .key.col-sm-2.col-xs-5
+            span Attractions :
+          .value.col-sm-10.col-xs-7
+            p(ng-show=" user.attractionsList.length == 0") No attraction added
+            p(data-ng-repeat="attraction in user.attractionsList").
+              <b> Name </b>:  {{attraction.attraction_name}} <br/>
+              <b>Info</b> :  {{attraction.attraction_about}}
+              <br/> <br/>
+        .info.row(data-ng-show="user.ourPlanId != -1") Our Plan for <b>{{selectedPlaceInfo.place_name}}</b> is selected.
+      hr
+      .others-information
+        .info.row
+          .key.col-sm-2.col-xs-5
+            span About Me/Us:
+          .value.col-sm-10.col-xs-7
+            p {{user.book.aboutMeUs}}
+        .info.row
+          .key.col-sm-2.col-xs-5
+            span More About Trip:
+          .value.col-sm-10.col-xs-7
+            p {{user.book.moreAboutTrip}}
+      hr      
+      .proceed-group.row
+        .col-xm-6.col-xxs-4
+          span.valid-form(ui-sref="planATrip.proceed({'planningStage':'personal-information'})"
+           data-ng-click="proceedToAddPersonalInformation()")
+            i.fa.fa-arrow-left
+            | Go back
+        .col-xs-6.col-xxs-8
+          span(data-ng-show="!isLoggedIn" onclick="LaunchDialog('login-dialog')") Login and Submit
+          span(data-ng-show="isLoggedIn" data-ng-click="submitThePlan()") Submit Plan
+          
